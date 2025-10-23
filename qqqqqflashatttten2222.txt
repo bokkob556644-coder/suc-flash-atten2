@@ -1,0 +1,3722 @@
+m@m-HP-Z440-Workstation:~/Desktop/vvvc$ nvnn -v
+Command 'nvnn' not found, did you mean:
+  command 'nnn' from deb nnn (4.9-1)
+Try: sudo apt install <deb name>
+m@m-HP-Z440-Workstation:~/Desktop/vvvc$ nvcc --version
+Command 'nvcc' not found, but can be installed with:
+sudo apt install nvidia-cuda-toolkit
+m@m-HP-Z440-Workstation:~/Desktop/vvvc$ ls -l /usr/local/
+total 36
+drwxr-xr-x  2 root root 4096 Oct 23 02:27 bin
+lrwxrwxrwx  1 root root   22 Oct 23 02:27 cuda -> /etc/alternatives/cuda
+lrwxrwxrwx  1 root root   25 Oct 23 02:27 cuda-12 -> /etc/alternatives/cuda-12
+drwxr-xr-x 15 root root 4096 Oct 23 02:27 cuda-12.5
+drwxr-xr-x  2 root root 4096 Aug  5 19:48 etc
+drwxr-xr-x  2 root root 4096 Aug  5 19:48 games
+drwxr-xr-x  2 root root 4096 Aug  5 19:48 include
+drwxr-xr-x  4 root root 4096 Sep 26 07:48 lib
+lrwxrwxrwx  1 root root    9 Aug  5 19:48 man -> share/man
+drwxr-xr-x  2 root root 4096 Aug  5 19:48 sbin
+drwxr-xr-x  7 root root 4096 Aug  5 19:51 share
+drwxr-xr-x  2 root root 4096 Aug  5 19:48 src
+m@m-HP-Z440-Workstation:~/Desktop/vvvc$ nano ~/.bashrc
+m@m-HP-Z440-Workstation:~/Desktop/vvvc$ source ~/.bashrc
+m@m-HP-Z440-Workstation:~/Desktop/vvvc$ echo $CUDA_HOME
+/usr/local/cuda
+m@m-HP-Z440-Workstation:~/Desktop/vvvc$ nvcc --version
+nvcc: NVIDIA (R) Cuda compiler driver
+Copyright (c) 2005-2024 NVIDIA Corporation
+Built on Thu_Jun__6_02:18:23_PDT_2024
+Cuda compilation tools, release 12.5, V12.5.82
+Build cuda_12.5.r12.5/compiler.34385749_0
+m@m-HP-Z440-Workstation:~/Desktop/vvvc$ uv
+An extremely fast Python package manager.
+
+Usage: uv [OPTIONS] <COMMAND>
+
+Commands:
+  auth     Manage authentication
+  run      Run a command or script
+  init     Create a new project
+  add      Add dependencies to the project
+  remove   Remove dependencies from the project
+  version  Read or update the project's version
+  sync     Update the project's environment
+  lock     Update the project's lockfile
+  export   Export the project's lockfile to an alternate format
+  tree     Display the project's dependency tree
+  format   Format Python code in the project
+  tool     Run and install commands provided by Python packages
+  python   Manage Python versions and installations
+  pip      Manage Python packages with a pip-compatible interface
+  venv     Create a virtual environment
+  build    Build Python packages into source distributions and wheels
+  publish  Upload distributions to an index
+  cache    Manage uv's cache
+  self     Manage the uv executable
+  help     Display documentation for a command
+
+Cache options:
+  -n, --no-cache               Avoid reading from or writing to the cache,
+                               instead using a temporary directory for the
+                               duration of the operation [env: UV_NO_CACHE=]
+      --cache-dir <CACHE_DIR>  Path to the cache directory [env: UV_CACHE_DIR=]
+
+Python options:
+      --managed-python       Require use of uv-managed Python versions [env:
+                             UV_MANAGED_PYTHON=]
+      --no-managed-python    Disable use of uv-managed Python versions [env:
+                             UV_NO_MANAGED_PYTHON=]
+      --no-python-downloads  Disable automatic downloads of Python. [env:
+                             "UV_PYTHON_DOWNLOADS=never"]
+
+Global options:
+  -q, --quiet...
+          Use quiet output
+  -v, --verbose...
+          Use verbose output
+      --color <COLOR_CHOICE>
+          Control the use of color in output [possible values: auto, always,
+          never]
+      --native-tls
+          Whether to load TLS certificates from the platform's native
+          certificate store [env: UV_NATIVE_TLS=]
+      --offline
+          Disable network access [env: UV_OFFLINE=]
+      --allow-insecure-host <ALLOW_INSECURE_HOST>
+          Allow insecure connections to a host [env: UV_INSECURE_HOST=]
+      --no-progress
+          Hide all progress outputs [env: UV_NO_PROGRESS=]
+      --directory <DIRECTORY>
+          Change to the given directory prior to running the command [env:
+          UV_WORKING_DIRECTORY=]
+      --project <PROJECT>
+          Run the command within the given project directory [env: UV_PROJECT=]
+      --config-file <CONFIG_FILE>
+          The path to a `uv.toml` file to use for configuration [env:
+          UV_CONFIG_FILE=]
+      --no-config
+          Avoid discovering configuration files (`pyproject.toml`, `uv.toml`)
+          [env: UV_NO_CONFIG=]
+  -h, --help
+          Display the concise help for this command
+  -V, --version
+          Display the uv version
+
+Use `uv help` for more details.
+m@m-HP-Z440-Workstation:~/Desktop/vvvc$ uv venv my-llm-env
+source my-llm-env/bin/activate
+Using CPython 3.10.19
+Creating virtual environment at: my-llm-env
+Activate with: source my-llm-env/bin/activate
+(my-llm-env) m@m-HP-Z440-Workstation:~/Desktop/vvvc$ uv pip install vllm
+uv pip install "sglang[all]"
+uv pip install flash-attn --no-build-isolation
+Using Python 3.10.19 environment at: my-llm-env
+Resolved 142 packages in 1.78s
+Prepared 46 packages in 6m 32s
+Installed 142 packages in 8.15s
+ + aiohappyeyeballs==2.6.1
+ + aiohttp==3.13.1
+ + aiosignal==1.4.0
+ + annotated-types==0.7.0
+ + anyio==4.11.0
+ + astor==0.8.1
+ + async-timeout==5.0.1
+ + attrs==25.4.0
+ + blake3==1.0.8
+ + cachetools==6.2.1
+ + cbor2==5.7.0
+ + certifi==2025.10.5
+ + cffi==2.0.0
+ + charset-normalizer==3.4.4
+ + click==8.2.1
+ + cloudpickle==3.1.1
+ + compressed-tensors==0.11.0
+ + cupy-cuda12x==13.6.0
+ + depyf==0.19.0
+ + dill==0.4.0
+ + diskcache==5.6.3
+ + distro==1.9.0
+ + dnspython==2.8.0
+ + einops==0.8.1
+ + email-validator==2.3.0
+ + exceptiongroup==1.3.0
+ + fastapi==0.119.1
+ + fastapi-cli==0.0.14
+ + fastapi-cloud-cli==0.3.1
+ + fastrlock==0.8.3
+ + filelock==3.20.0
+ + frozendict==2.4.6
+ + frozenlist==1.8.0
+ + fsspec==2025.9.0
+ + gguf==0.17.1
+ + h11==0.16.0
+ + hf-xet==1.1.10
+ + httpcore==1.0.9
+ + httptools==0.7.1
+ + httpx==0.28.1
+ + huggingface-hub==0.35.3
+ + idna==3.11
+ + interegular==0.3.3
+ + jinja2==3.1.6
+ + jiter==0.11.1
+ + jsonschema==4.25.1
+ + jsonschema-specifications==2025.9.1
+ + lark==1.2.2
+ + llguidance==0.7.30
+ + llvmlite==0.44.0
+ + lm-format-enforcer==0.11.3
+ + markdown-it-py==4.0.0
+ + markupsafe==3.0.3
+ + mdurl==0.1.2
+ + mistral-common==1.8.5
+ + mpmath==1.3.0
+ + msgpack==1.1.2
+ + msgspec==0.19.0
+ + multidict==6.7.0
+ + networkx==3.4.2
+ + ninja==1.13.0
+ + numba==0.61.2
+ + numpy==2.2.6
+ + nvidia-cublas-cu12==12.8.4.1
+ + nvidia-cuda-cupti-cu12==12.8.90
+ + nvidia-cuda-nvrtc-cu12==12.8.93
+ + nvidia-cuda-runtime-cu12==12.8.90
+ + nvidia-cudnn-cu12==9.10.2.21
+ + nvidia-cufft-cu12==11.3.3.83
+ + nvidia-cufile-cu12==1.13.1.3
+ + nvidia-curand-cu12==10.3.9.90
+ + nvidia-cusolver-cu12==11.7.3.90
+ + nvidia-cusparse-cu12==12.5.8.93
+ + nvidia-cusparselt-cu12==0.7.1
+ + nvidia-nccl-cu12==2.27.3
+ + nvidia-nvjitlink-cu12==12.8.93
+ + nvidia-nvtx-cu12==12.8.90
+ + openai==2.6.0
+ + openai-harmony==0.0.4
+ + opencv-python-headless==4.12.0.88
+ + outlines-core==0.2.11
+ + packaging==25.0
+ + partial-json-parser==0.2.1.1.post6
+ + pillow==12.0.0
+ + prometheus-client==0.23.1
+ + prometheus-fastapi-instrumentator==7.1.0
+ + propcache==0.4.1
+ + protobuf==6.33.0
+ + psutil==7.1.1
+ + py-cpuinfo==9.0.0
+ + pybase64==1.4.2
+ + pycountry==24.6.1
+ + pycparser==2.23
+ + pydantic==2.12.3
+ + pydantic-core==2.41.4
+ + pydantic-extra-types==2.10.6
+ + pygments==2.19.2
+ + python-dotenv==1.1.1
+ + python-json-logger==4.0.0
+ + python-multipart==0.0.20
+ + pyyaml==6.0.3
+ + pyzmq==27.1.0
+ + ray==2.50.1
+ + referencing==0.37.0
+ + regex==2025.10.23
+ + requests==2.32.5
+ + rich==14.2.0
+ + rich-toolkit==0.15.1
+ + rignore==0.7.1
+ + rpds-py==0.28.0
+ + safetensors==0.6.2
+ + scipy==1.15.3
+ + sentencepiece==0.2.1
+ + sentry-sdk==2.42.1
+ + setproctitle==1.3.7
+ + setuptools==80.9.0
+ + shellingham==1.5.4
+ + sniffio==1.3.1
+ + soundfile==0.13.1
+ + soxr==1.0.0
+ + starlette==0.48.0
+ + sympy==1.14.0
+ + tiktoken==0.12.0
+ + tokenizers==0.22.1
+ + torch==2.8.0
+ + torchaudio==2.8.0
+ + torchvision==0.23.0
+ + tqdm==4.67.1
+ + transformers==4.57.1
+ + triton==3.4.0
+ + typer==0.20.0
+ + typing-extensions==4.15.0
+ + typing-inspection==0.4.2
+ + urllib3==2.5.0
+ + uvicorn==0.38.0
+ + uvloop==0.22.1
+ + vllm==0.11.0
+ + watchfiles==1.1.1
+ + websockets==15.0.1
+ + xformers==0.0.32.post1
+ + xgrammar==0.1.25
+ + yarl==1.22.0
+Using Python 3.10.19 environment at: my-llm-env
+Resolved 154 packages in 9.56s
+      Built flashinfer-python==0.3.1
+Prepared 54 packages in 7m 33s
+Uninstalled 4 packages in 140ms
+Installed 55 packages in 92ms
+ + airportsdata==20250909
+ + anthropic==0.71.0
+ + asttokens==3.0.0
+ + blobfile==3.0.0
+ + build==1.3.0
+ + cuda-bindings==13.0.3
+ + cuda-pathfinder==1.3.1
+ + cuda-python==13.0.3
+ + datasets==4.2.0
+ + decorator==5.2.1
+ + decord==0.6.0
+ + docstring-parser==0.17.0
+ + executing==2.2.1
+ + flashinfer-python==0.3.1
+ + hf-transfer==0.1.9
+ + ipython==8.37.0
+ + jedi==0.19.2
+ + lxml==6.0.2
+ + matplotlib-inline==0.1.7
+ + modelscope==1.31.0
+ + multiprocess==0.70.16
+ + nest-asyncio==1.6.0
+ + nvidia-cudnn-frontend==1.15.0
+ + nvidia-ml-py==13.580.82
+ - openai==2.6.0
+ + openai==1.99.1
+ + orjson==3.11.3
+ + outlines==0.1.11
+ - outlines-core==0.2.11
+ + outlines-core==0.1.26
+ + pandas==2.3.3
+ + parso==0.8.5
+ + pexpect==4.9.0
+ + prompt-toolkit==3.0.52
+ + ptyprocess==0.7.0
+ + pure-eval==0.2.3
+ + pyarrow==21.0.0
+ + pycryptodomex==3.23.0
+ + pynvml==13.0.1
+ + pyproject-hooks==1.2.0
+ + python-dateutil==2.9.0.post0
+ + pytz==2025.2
+ + sgl-kernel==0.3.9.post2
+ + sglang==0.5.2
+ + six==1.17.0
+ + stack-data==0.6.3
+ + tabulate==0.9.0
+ + timm==1.0.16
+ + tomli==2.3.0
+ + torch-memory-saver==0.0.8
+ + torchao==0.9.0
+ + traitlets==5.14.3
+ - transformers==4.57.1
+ + transformers==4.56.1
+ + tzdata==2025.2
+ + wcwidth==0.2.14
+ - xgrammar==0.1.25
+ + xgrammar==0.1.24
+ + xxhash==3.6.0
+Using Python 3.10.19 environment at: my-llm-env
+Resolved 27 packages in 2.78s
+   Building flash-attn==2.8.3
+   Building flash-attn==2.8.3
+⠴ Preparing packages... (0/1)                                                                                            
+
+   Building flash-attn==2.8.3
+   Building flash-attn==2.8.3
+   Building flash-attn==2.8.3
+   Building flash-attn==2.8.3
+   Building flash-attn==2.8.3
+⠹ Preparing packages... (0/1)                                                                                            ^C
+(my-llm-env) m@m-HP-Z440-Workstation:~/Desktop/vvvc$ uv pip install flash-attn --no-build-isolation
+Using Python 3.10.19 environment at: my-llm-env
+Resolved 27 packages in 435ms
+   Building flash-attn==2.8.3
+⠼ Preparing packages... (0/1)                                                                                            ^C
+(my-llm-env) m@m-HP-Z440-Workstation:~/Desktop/vvvc$ ^C
+(my-llm-env) m@m-HP-Z440-Workstation:~/Desktop/vvvc$ vllm -v
+/home/m/Desktop/vvvc/my-llm-env/lib/python3.10/site-packages/torch/cuda/__init__.py:63: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+INFO 10-23 03:42:30 [__init__.py:216] Automatically detected platform cuda.
+0.11.0
+(my-llm-env) m@m-HP-Z440-Workstation:~/Desktop/vvvc$ sglang -v
+Command 'sglang' not found, did you mean:
+  command 'sclang' from deb supercollider-language (1:3.13.0+repack-1build1)
+Try: sudo apt install <deb name>
+(my-llm-env) m@m-HP-Z440-Workstation:~/Desktop/vvvc$ pip show torch
+WARNING: Package(s) not found: torch
+(my-llm-env) m@m-HP-Z440-Workstation:~/Desktop/vvvc$ uv pip install torch==2.8.0 torchvision==0.23.0 torchaudio==2.8.0 --index-url https://download.pytorch.org/whl/cu128
+Using Python 3.10.19 environment at: my-llm-env
+Audited 3 packages in 9ms
+(my-llm-env) m@m-HP-Z440-Workstation:~/Desktop/vvvc$ python -c "import torch, torchvision, torchaudio; print(torch.__version__, torchvision.__version__, torchaudio.__version__); print(torch.version.cuda)"
+/home/m/Desktop/vvvc/my-llm-env/lib/python3.10/site-packages/torch/cuda/__init__.py:63: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+2.8.0+cu128 0.23.0+cu128 2.8.0+cu128
+12.8
+(my-llm-env) m@m-HP-Z440-Workstation:~/Desktop/vvvc$ uv pip install torch==2.8.0 torchvision==0.23.0 torchaudio==2.8.0 --index-url https://download.pytorch.org/whl/cu128
+Using Python 3.10.19 environment at: my-llm-env
+Audited 3 packages in 7ms
+(my-llm-env) m@m-HP-Z440-Workstation:~/Desktop/vvvc$ uv pip show torch
+Using Python 3.10.19 environment at: my-llm-env
+Name: torch
+Version: 2.8.0
+Location: /home/m/Desktop/vvvc/my-llm-env/lib/python3.10/site-packages
+Requires: filelock, fsspec, jinja2, networkx, nvidia-cublas-cu12, nvidia-cuda-cupti-cu12, nvidia-cuda-nvrtc-cu12, nvidia-cuda-runtime-cu12, nvidia-cudnn-cu12, nvidia-cufft-cu12, nvidia-cufile-cu12, nvidia-curand-cu12, nvidia-cusolver-cu12, nvidia-cusparse-cu12, nvidia-cusparselt-cu12, nvidia-nccl-cu12, nvidia-nvjitlink-cu12, nvidia-nvtx-cu12, sympy, triton, typing-extensions
+Required-by: compressed-tensors, flashinfer-python, outlines, timm, torchaudio, torchvision, vllm, xformers, xgrammar
+(my-llm-env) m@m-HP-Z440-Workstation:~/Desktop/vvvc$ uv pip install flash-attn --no-build-isolation
+Using Python 3.10.19 environment at: my-llm-env
+Resolved 27 packages in 12ms
+   Building flash-attn==2.8.3
+⠇ Preparing packages... (0/1)                                                                                            ^C
+(my-llm-env) m@m-HP-Z440-Workstation:~/Desktop/vvvc$ uv pip install https://github.com/Dao-AILab/flash-attention/releases/download/v2.8.3/flash_attn-2.8.3+cu12torch2.8cxx11abiTRUE-cp312-cp312-linux_x86_64.whl
+Using Python 3.10.19 environment at: my-llm-env
+Resolved 27 packages in 1m 12s
+error: Failed to determine installation plan
+  Caused by: A URL dependency is incompatible with the current platform: https://github.com/Dao-AILab/flash-attention/releases/download/v2.8.3/flash_attn-2.8.3+cu12torch2.8cxx11abiTRUE-cp312-cp312-linux_x86_64.whl
+
+hint: The wheel is compatible with CPython 3.12 (`cp312`), but you're using CPython 3.10 (`cp310`)
+(my-llm-env) m@m-HP-Z440-Workstation:~/Desktop/vvvc$ uv pip install https://github.com/Dao-AILab/flash-attention/releases/download/v2.8.3/flash_attn-2.8.3+cu12torch2.8cxx11abiTRUE-cp310-cp310-linux_x86_64.whl
+Using Python 3.10.19 environment at: my-llm-env
+Resolved 27 packages in 1m 12s
+Prepared 1 package in 1m 13s
+Installed 1 package in 12ms
+ + flash-attn==2.8.3+cu12torch2.8cxx11abitrue (from https://github.com/Dao-AILab/flash-attention/releases/download/v2.8.3/flash_attn-2.8.3+cu12torch2.8cxx11abiTRUE-cp310-cp310-linux_x86_64.whl)
+(my-llm-env) m@m-HP-Z440-Workstation:~/Desktop/vvvc$ python
+Python 3.10.19 (main, Oct 10 2025, 12:46:15) [Clang 20.1.4 ] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import flash_attn_interface
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+ModuleNotFoundError: No module named 'flash_attn_interface'
+>>> flash_attn_interface.flash_attn_func()
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'flash_attn_interface' is not defined
+>>> from typing import Optional, Sequence, Tuple, Union
+>>> 
+>>> import torch
+/home/m/Desktop/vvvc/my-llm-env/lib/python3.10/site-packages/torch/cuda/__init__.py:63: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+>>> import torch.nn as nn
+>>> import os
+>>> 
+>>> # isort: off
+>>> # We need to import the CUDA kernels after importing torch
+>>> USE_TRITON_ROCM = os.getenv("FLASH_ATTENTION_TRITON_AMD_ENABLE", "FALSE") == "TRUE"
+>>> if USE_TRITON_ROCM:
+...     from .flash_attn_triton_amd import interface_fa as flash_attn_gpu
+... else:
+...     import flash_attn_2_cuda as flash_attn_gpu
+... 
+>>> # isort: on
+>>> 
+>>> def maybe_contiguous(x):
+...     return x.contiguous() if x is not None and x.stride(-1) != 1 else x
+... 
+>>> # Copyright (c) 2023, Tri Dao.
+>>> 
+>>> from typing import Optional, Sequence, Tuple, Union
+>>> 
+e>>> import torch
+>>> import torch.nn as nn
+>>> import os
+>>> 
+>>> # isort: off
+>>> # We need to import the CUDA kernels after importing torch
+>>> USE_TRITON_ROCM = os.getenv("FLASH_ATTENTION_TRITON_AMD_ENABLE", "FALSE") == "TRUE"
+>>> if USE_TRITON_ROCM:
+...     from .flash_attn_triton_amd import interface_fa as flash_attn_gpu
+... else:
+...     import flash_attn_2_cuda as flash_attn_gpu
+... 
+>>> # isort: on
+>>> 
+ >>> def maybe_contiguous(x):
+...     return x.contiguous() if x is not None and x.stride(-1) != 1 else x
+... 
+>>> 
+_>>> def _get_block_size_n(device, head_dim, is_dropout, is_causal):
+...     # This should match the block sizes in the CUDA kernel
+...     assert head_dim <= 256
+...     major, minor = torch.cuda.get_device_capability(device)
+...     is_sm8x = major == 8 and minor > 0  # Only include sm86 and sm89, exclude sm80 (A100)
+...     is_sm80 = major == 8 and minor == 0
+...     is_sm90 = major == 9 and minor == 0
+...     if head_dim <= 32:
+...         return 128
+...     if head_dim <= 64:
+...         return 128 if not is_dropout else 64
+...     elif head_dim <= 96:
+...         return 64
+t...     elif head_dim <= 128:
+...         if is_sm8x:
+...             return 64 if (not is_dropout and is_causal) else 32
+...         else:
+...             return 64 if not is_dropout else 32
+...     elif head_dim <= 192:
+...         return 64
+...     elif head_dim <= 224:
+...         return 64
+...     elif head_dim <= 256:
+...         return 64
+... 
+>>> 
+v>>> def round_multiple(x, m):
+...     return (x + m - 1) // m * m
+... 
+>>> 
+>>> # torch.compile() support is only enabled for pytorch >= 2.4
+>>> # The reason for this is that we are using the new custom_op and register_fake
+>>> # APIs, which support inplace modification of inputs in the function itself
+>>> if torch.__version__ >= "2.4.0":
+...     _torch_custom_op_wrapper = torch.library.custom_op
+...     _torch_register_fake_wrapper = torch.library.register_fake
+... else:
+...     def noop_custom_op_wrapper(name, fn=None, /, *, mutates_args, device_types=None, schema=None):
+...         def wrap(func):
+...             return func
+...         if fn is None:
+...             return wrap
+...         return fn
+...     def noop_register_fake_wrapper(op, fn=None, /, *, lib=None, _stacklevel=1):
+...         def wrap(func):
+...             return func
+...         if fn is None:
+...             return wrap
+...         return fn
+...     _torch_custom_op_wrapper = noop_custom_op_wrapper
+...     _torch_register_fake_wrapper = noop_register_fake_wrapper
+... 
+>>> 
+t>>> @_torch_custom_op_wrapper("flash_attn::_flash_attn_forward", mutates_args=(), device_types="cuda")
+... def _flash_attn_forward(
+...     q: torch.Tensor,
+...     k: torch.Tensor,
+...     v: torch.Tensor,
+...     dropout_p: float,
+...     softmax_scale: float,
+...     causal: bool,
+...     window_size_left: int,
+...     window_size_right: int,
+...     softcap: float,
+...     alibi_slopes: Optional[torch.Tensor],
+...     return_softmax: bool
+... ) -> Tuple[torch.Tensor, torch.Tensor, torch.Tensor, torch.Tensor]:
+...     q, k, v = [maybe_contiguous(x) for x in (q, k, v)]
+...     out, softmax_lse, S_dmask, rng_state = flash_attn_gpu.fwd(
+...         q,
+...         k,
+t...         v,
+...         None,
+...         alibi_slopes,
+...         dropout_p,
+...         softmax_scale,
+...         causal,
+...         window_size_left,
+...         window_size_right,
+...         softcap,
+...         return_softmax,
+...         None,
+...     )
+...     return out, softmax_lse, S_dmask, rng_state
+... 
+>>> 
+
+>>> @_torch_register_fake_wrapper("flash_attn::_flash_attn_forward")
+... def _flash_attn_forward_fake(
+...     q: torch.Tensor,
+...     k: torch.Tensor,
+...     v: torch.Tensor,
+...     dropout_p: float,
+...     softmax_scale: float,
+...     causal: bool,
+...     window_size_left: int,
+...     window_size_right: int,
+...     softcap: float,
+...     alibi_slopes: Optional[torch.Tensor],
+...     return_softmax: bool
+... ) -> Tuple[torch.Tensor, torch.Tensor, torch.Tensor, torch.Tensor]:
+...     q, k, v = [maybe_contiguous(x) for x in (q, k, v)]
+...     batch_size, seqlen_q, num_heads, head_size = q.shape
+...     seqlen_k = k.shape[1]
+...     out = torch.empty_like(q)
+...     softmax_lse = torch.empty((batch_size, num_heads, seqlen_q), dtype=torch.float32, device=q.device, layout=q.layout)
+...     p = torch.empty((0,), dtype=q.dtype, device=q.device, layout=q.layout)
+...     if return_softmax:
+...         if torch.cuda.is_available() and torch.version.hip:
+...             p = torch.empty((batch_size, num_heads, seqlen_q, seqlen_k), dtype=q.dtype, device=q.device, layout=q.layout)
+...         else:
+...             p = torch.empty((batch_size, num_heads, round_multiple(seqlen_q, 128), round_multiple(seqlen_k, 128)), dtype=q.dtype, device=q.device, layout=q.layout)
+...     rng_state = torch.empty((2,), dtype=torch.int64, device=q.device)
+... 
+>>>     return out, softmax_lse, p, rng_state
+  File "<stdin>", line 1
+    return out, softmax_lse, p, rng_state
+IndentationError: unexpected indent
+>>> 
+>>> 
+>>> if torch.__version__ >= "2.4.0":
+...     _wrapped_flash_attn_forward = torch.ops.flash_attn._flash_attn_forward
+... else:
+...     _wrapped_flash_attn_forward = _flash_attn_forward
+... 
+>>> 
+>>> @_torch_custom_op_wrapper("flash_attn::_flash_attn_varlen_forward", mutates_args=(), device_types="cuda")
+... def _flash_attn_varlen_forward(
+...     q: torch.Tensor,
+...     k: torch.Tensor,
+...     v: torch.Tensor,
+...     cu_seqlens_q: torch.Tensor,
+...     cu_seqlens_k: torch.Tensor,
+...     max_seqlen_q: int,
+...     max_seqlen_k: int,
+,...     dropout_p: float,
+...     softmax_scale: float,
+...     causal: bool,
+...     window_size_left: int = -1,
+...     window_size_right: int = -1,
+...     softcap: float = 0.0,
+...     alibi_slopes: Optional[torch.Tensor] = None,
+...     return_softmax: bool = False,
+...     block_table: Optional[torch.Tensor] = None,
+...     leftpad_k: Optional[torch.Tensor] = None,
+...     seqused_k: Optional[torch.Tensor] = None,
+...     zero_tensors: bool = False,
+... ) -> Tuple[torch.Tensor, torch.Tensor, torch.Tensor, torch.Tensor]:
+...     q, k, v = [maybe_contiguous(x) for x in (q, k, v)]
+...     out, softmax_lse, S_dmask, rng_state = flash_attn_gpu.varlen_fwd(
+...         q,
+...         k,
+...         v,
+...         None,
+...         cu_seqlens_q,
+...         cu_seqlens_k,
+...         seqused_k,
+...         leftpad_k,
+...         block_table,
+...         alibi_slopes,
+...         max_seqlen_q,
+...         max_seqlen_k,
+...         dropout_p,
+...         softmax_scale,
+...         zero_tensors,
+l...         causal,
+...         window_size_left,
+...         window_size_right,
+...         softcap,
+...         return_softmax,
+...         None,
+...     )
+...     # if out.isnan().any() or softmax_lse.isnan().any():
+...     #     breakpoint()
+...     return out, softmax_lse, S_dmask, rng_state
+... 
+e>>> 
+,>>> @_torch_register_fake_wrapper("flash_attn::_flash_attn_varlen_forward")
+... def _flash_attn_varlen_forward_fake(
+...     q: torch.Tensor,
+...     k: torch.Tensor,
+...     v: torch.Tensor,
+...     cu_seqlens_q: torch.Tensor,
+...     cu_seqlens_k: torch.Tensor,
+...     max_seqlen_q: int,
+...     max_seqlen_k: int,
+...     dropout_p: float,
+...     softmax_scale: float,
+...     causal: bool,
+...     window_size_left: int = -1,
+...     window_size_right: int = -1,
+...     softcap: float = 0.0,
+...     alibi_slopes: Optional[torch.Tensor] = None,
+...     return_softmax: bool = False,
+...     block_table: Optional[torch.Tensor] = None,
+...     leftpad_k: Optional[torch.Tensor] = None,
+...     seqused_k: Optional[torch.Tensor] = None,
+...     zero_tensors: bool = False,
+... ) -> Tuple[torch.Tensor, torch.Tensor, torch.Tensor, torch.Tensor]:
+...     q, k, v = [maybe_contiguous(x) for x in (q, k, v)]
+...     paged_kv = block_table is not None
+...     batch_size = cu_seqlens_q.numel() - 1
+...     total_q, num_heads, _ = q.shape
+...     
+...     out = torch.empty_like(q)
+...     softmax_lse = torch.empty((num_heads, total_q), dtype=torch.float32, device=q.device, layout=q.layout)
+...     p = torch.empty((0,), dtype=q.dtype, device=q.device, layout=q.layout)
+...     if return_softmax:
+...         if torch.cuda.is_available() and torch.version.hip:
+...             p = torch.empty((batch_size, num_heads, max_seqlen_q, max_seqlen_k), dtype=q.dtype, device=q.device, layout=q.layout)
+...         else:
+ ...             p = torch.empty((batch_size, num_heads, round_multiple(max_seqlen_q, 128), round_multiple(max_seqlen_k, 128)), dtype=q.dtype, device=q.device, layout=q.layout)
+...     rng_state = torch.empty((2,), dtype=torch.int64, device=q.device)
+...     return out, softmax_lse, p, rng_state
+... 
+>>> 
+>>> if torch.__version__ >= "2.4.0":
+...     _wrapped_flash_attn_varlen_forward = torch.ops.flash_attn._flash_attn_varlen_forward
+... else:
+...     _wrapped_flash_attn_varlen_forward = _flash_attn_varlen_forward
+... 
+>>> 
+>>> @_torch_custom_op_wrapper("flash_attn::_flash_attn_backward", mutates_args=("dq", "dk", "dv"), device_types="cuda")
+... def _flash_attn_backward(
+o...     dout: torch.Tensor,
+...     q: torch.Tensor,
+...     k: torch.Tensor,
+...     v: torch.Tensor,
+r...     out: torch.Tensor,
+a...     softmax_lse: torch.Tensor,
+...     dq: Optional[torch.Tensor],
+...     dk: Optional[torch.Tensor],
+...     dv: Optional[torch.Tensor],
+...     dropout_p: float,
+...     softmax_scale: float,
+...     causal: bool,
+...     window_size_left: int,
+...     window_size_right: int,
+...     softcap: float,
+...     alibi_slopes: Optional[torch.Tensor],
+...     deterministic: bool,
+...     rng_state: Optional[torch.Tensor] = None,
+... ) -> torch.Tensor:
+...     # dq, dk, dv are allocated by us so they should already be contiguous
+...     dout, q, k, v, out = [maybe_contiguous(x) for x in (dout, q, k, v, out)]
+...     (
+...         dq,
+...         dk,
+...         dv,
+_...         softmax_d,
+...     ) = flash_attn_gpu.bwd(
+...         dout,
+...         q,
+...         k,
+...         v,
+...         out,
+...         softmax_lse,
+...         dq,
+...         dk,
+...         dv,
+...         alibi_slopes,
+...         dropout_p,
+...         softmax_scale,
+...         causal,
+...         window_size_left,
+...         window_size_right,
+...         softcap,
+...         deterministic,
+...         None,
+...         rng_state,
+ ...     )
+...     return softmax_d
+... 
+>>> 
+>>> @_torch_register_fake_wrapper("flash_attn::_flash_attn_backward")
+... def _flash_attn_backward_fake(
+...     dout: torch.Tensor,
+...     q: torch.Tensor,
+...     k: torch.Tensor,
+...     v: torch.Tensor,
+c...     out: torch.Tensor,
+...     softmax_lse: torch.Tensor,
+...     dq: Optional[torch.Tensor],
+...     dk: Optional[torch.Tensor],
+...     dv: Optional[torch.Tensor],
+...     dropout_p: float,
+_...     softmax_scale: float,
+...     causal: bool,
+...     window_size_left: int,
+...     window_size_right: int,
+...     softcap: float,
+...     alibi_slopes: Optional[torch.Tensor],
+...     deterministic: bool,
+...     rng_state: Optional[torch.Tensor] = None,
+... ) -> torch.Tensor:
+...     dout, q, k, v, out = [maybe_contiguous(x) for x in (dout, q, k, v, out)]
+...     if dq is None:
+...         dq = torch.empty_like(q)
+...     if dk is None:
+...         dk = torch.empty_like(k)
+...     if dv is None:
+...         dv = torch.empty_like(v)
+...     batch_size, seqlen_q, num_heads, _ = q.shape
+...     if torch.cuda.is_available() and torch.version.hip:
+...         softmax_d = torch.empty((batch_size, num_heads, seqlen_q), device=q.device, dtype=torch.float32)
+...     else:
+...         softmax_d = torch.empty((batch_size, num_heads, round_multiple(seqlen_q, 128)), device=q.device, dtype=torch.float32)
+...     
+...     return softmax_d
+... 
+>>> 
+>>> if torch.__version__ >= "2.4.0":
+...     _wrapped_flash_attn_backward = torch.ops.flash_attn._flash_attn_backward
+... else:
+...     _wrapped_flash_attn_backward = _flash_attn_backward
+... 
+>>> 
+>>> @_torch_custom_op_wrapper("flash_attn::_flash_attn_varlen_backward", mutates_args=("dq", "dk", "dv"), device_types="cuda")
+... def _flash_attn_varlen_backward(
+...     dout: torch.Tensor,
+...     q: torch.Tensor,
+...     k: torch.Tensor,
+...     v: torch.Tensor,
+...     out: torch.Tensor,
+...     softmax_lse: torch.Tensor,
+...     dq: Optional[torch.Tensor],
+...     dk: Optional[torch.Tensor],
+...     dv: Optional[torch.Tensor],
+...     cu_seqlens_q: torch.Tensor,
+...     cu_seqlens_k: torch.Tensor,
+...     max_seqlen_q: int,
+...     max_seqlen_k: int,
+...     dropout_p: float,
+...     softmax_scale: float,
+...     causal: bool,
+...     window_size_left: int,
+...     window_size_right: int,
+...     softcap: float,
+...     alibi_slopes: Optional[torch.Tensor],
+...     deterministic: bool,
+...     rng_state: Optional[torch.Tensor] = None,
+...     zero_tensors: bool = False,
+... ) -> torch.Tensor:
+...     # dq, dk, dv are allocated by us so they should already be contiguous
+...     dout, q, k, v, out = [maybe_contiguous(x) for x in (dout, q, k, v, out)]
+...     (
+...         dq,
+...         dk,
+...         dv,
+...         softmax_d,
+...     ) = flash_attn_gpu.varlen_bwd(
+...         dout,
+...         q,
+...         k,
+...         v,
+...         out,
+...         softmax_lse,
+...         dq,
+...         dk,
+...         dv,
+...         cu_seqlens_q,
+...         cu_seqlens_k,
+...         alibi_slopes,
+...         max_seqlen_q,
+...         max_seqlen_k,
+...         dropout_p,
+...         softmax_scale,
+...         zero_tensors,
+...         causal,
+...         window_size_left,
+...         window_size_right,
+...         softcap,
+...         deterministic,
+...         None,
+...         rng_state,
+...     )
+...     # if dk.isnan().any() or dk.isnan().any() or dv.isnan().any() or softmax_d.isnan().any():
+...     #     breakpoint()
+...     return softmax_d
+... 
+>>> 
+>>> @_torch_register_fake_wrapper("flash_attn::_flash_attn_varlen_backward")
+... def _flash_attn_varlen_backward_fake(
+...     dout: torch.Tensor,
+...     q: torch.Tensor,
+...     k: torch.Tensor,
+...     v: torch.Tensor,
+...     out: torch.Tensor,
+...     softmax_lse: torch.Tensor,
+...     dq: Optional[torch.Tensor],
+...     dk: Optional[torch.Tensor],
+...     dv: Optional[torch.Tensor],
+...     cu_seqlens_q: torch.Tensor,
+...     cu_seqlens_k: torch.Tensor,
+...     max_seqlen_q: int,
+...     max_seqlen_k: int,
+...     dropout_p: float,
+...     softmax_scale: float,
+...     causal: bool,
+...     window_size_left: int,
+...     window_size_right: int,
+...     softcap: float,
+...     alibi_slopes: Optional[torch.Tensor],
+...     deterministic: bool,
+...     rng_state: Optional[torch.Tensor] = None,
+...     zero_tensors: bool = False,
+... ) -> torch.Tensor:
+...     dout, q, k, v, out = [maybe_contiguous(x) for x in (dout, q, k, v, out)]
+...     batch_size = cu_seqlens_q.numel() - 1
+...     total_q, num_heads, _ = q.shape
+... 
+>>>     if dq is None:
+  File "<stdin>", line 1
+    if dq is None:
+IndentationError: unexpected indent
+>>>         dq = torch.empty_like(q)
+  File "<stdin>", line 1
+    dq = torch.empty_like(q)
+IndentationError: unexpected indent
+>>>     if dk is None:
+  File "<stdin>", line 1
+    if dk is None:
+IndentationError: unexpected indent
+>>>         dk = torch.empty_like(k)
+  File "<stdin>", line 1
+    dk = torch.empty_like(k)
+IndentationError: unexpected indent
+>>>     if dv is None:
+  File "<stdin>", line 1
+    if dv is None:
+IndentationError: unexpected indent
+>>>         dv = torch.empty_like(v)
+  File "<stdin>", line 1
+    dv = torch.empty_like(v)
+IndentationError: unexpected indent
+>>>     if torch.cuda.is_available() and torch.version.hip:
+  File "<stdin>", line 1
+    if torch.cuda.is_available() and torch.version.hip:
+IndentationError: unexpected indent
+>>>         softmax_d = torch.empty((num_heads, total_q), device=q.device, dtype=torch.float32)
+  File "<stdin>", line 1
+    softmax_d = torch.empty((num_heads, total_q), device=q.device, dtype=torch.float32)
+IndentationError: unexpected indent
+>>>     else:
+  File "<stdin>", line 1
+    else:
+IndentationError: unexpected indent
+>>>         softmax_d = torch.empty((num_heads, total_q + 128 * batch_size), device=q.device, dtype=torch.float32)
+  File "<stdin>", line 1
+    softmax_d = torch.empty((num_heads, total_q + 128 * batch_size), device=q.device, dtype=torch.float32)
+IndentationError: unexpected indent
+>>>     
+>>>     return softmax_d
+  File "<stdin>", line 1
+    return softmax_d
+IndentationError: unexpected indent
+>>> 
+>>> 
+>>> if torch.__version__ >= "2.4.0":
+...     _wrapped_flash_attn_varlen_backward = torch.ops.flash_attn._flash_attn_varlen_backward
+... else:
+...     _wrapped_flash_attn_varlen_backward = _flash_attn_varlen_backward
+... 
+>>> 
+>>> class FlashAttnQKVPackedFunc(torch.autograd.Function):
+...     @staticmethod
+...     def forward(
+...         ctx,
+...         qkv,
+...         dropout_p,
+...         softmax_scale,
+...         causal,
+...         window_size,
+...         softcap,
+...         alibi_slopes,
+...         deterministic,
+...         return_softmax,
+...         is_grad_enabled,
+...     ):
+...         is_grad = is_grad_enabled and qkv.requires_grad
+...         if softmax_scale is None:
+...             softmax_scale = qkv.shape[-1] ** (-0.5)
+...         q, k, v = qkv[:, :, 0].detach(), qkv[:, :, 1].detach(), qkv[:, :, 2].detach()
+...         head_size_og = q.size(3)
+...         if head_size_og % 8 != 0:
+...             q = torch.nn.functional.pad(q, [0, 8 - head_size_og % 8])
+...             k = torch.nn.functional.pad(k, [0, 8 - head_size_og % 8])
+...             v = torch.nn.functional.pad(v, [0, 8 - head_size_og % 8])
+...         out_padded, softmax_lse, S_dmask, rng_state =  _wrapped_flash_attn_forward(
+...             q,
+...             k,
+...             v,
+p...             dropout_p,
+...             softmax_scale,
+...             causal=causal,
+...             window_size_left=window_size[0],
+...             window_size_right=window_size[1],
+...             softcap=softcap,
+...             alibi_slopes=alibi_slopes,
+...             return_softmax=return_softmax and dropout_p > 0,
+...         )
+...         if is_grad:
+...             ctx.save_for_backward(q, k, v, out_padded, softmax_lse, rng_state)
+...             ctx.dropout_p = dropout_p
+...             ctx.softmax_scale = softmax_scale
+...             ctx.causal = causal
+...             ctx.window_size = window_size
+...             ctx.softcap = softcap
+...             ctx.alibi_slopes = alibi_slopes
+...             ctx.deterministic = deterministic
+...         out = out_padded[..., :head_size_og]
+...         return out if not return_softmax else (out, softmax_lse, S_dmask)
+... 
+>>>     @staticmethod
+  File "<stdin>", line 1
+    @staticmethod
+IndentationError: unexpected indent
+>>>     def backward(ctx, dout, *args):
+  File "<stdin>", line 1
+    def backward(ctx, dout, *args):
+IndentationError: unexpected indent
+>>>         q, k, v, out, softmax_lse, rng_state = ctx.saved_tensors
+  File "<stdin>", line 1
+    q, k, v, out, softmax_lse, rng_state = ctx.saved_tensors
+IndentationError: unexpected indent
+>>>         qkv_shape = q.shape[:-2] + (3, *q.shape[-2:])
+  File "<stdin>", line 1
+    qkv_shape = q.shape[:-2] + (3, *q.shape[-2:])
+IndentationError: unexpected indent
+>>>         dqkv = torch.empty(qkv_shape, dtype=q.dtype, device=q.device)
+  File "<stdin>", line 1
+    dqkv = torch.empty(qkv_shape, dtype=q.dtype, device=q.device)
+IndentationError: unexpected indent
+>>>         head_size_og = dout.size(3)
+  File "<stdin>", line 1
+    head_size_og = dout.size(3)
+IndentationError: unexpected indent
+>>>         dout_padded = dout
+  File "<stdin>", line 1
+    dout_padded = dout
+IndentationError: unexpected indent
+>>>         if head_size_og % 8 != 0:
+  File "<stdin>", line 1
+    if head_size_og % 8 != 0:
+IndentationError: unexpected indent
+>>>             dout_padded = torch.nn.functional.pad(dout, [0, 8 - head_size_og % 8])
+  File "<stdin>", line 1
+    dout_padded = torch.nn.functional.pad(dout, [0, 8 - head_size_og % 8])
+IndentationError: unexpected indent
+>>>         _wrapped_flash_attn_backward(
+  File "<stdin>", line 1
+    _wrapped_flash_attn_backward(
+IndentationError: unexpected indent
+>>>             dout_padded,
+  File "<stdin>", line 1
+    dout_padded,
+IndentationError: unexpected indent
+>>>             q,
+  File "<stdin>", line 1
+    q,
+IndentationError: unexpected indent
+>>>             k,
+  File "<stdin>", line 1
+    k,
+IndentationError: unexpected indent
+>>>             v,
+  File "<stdin>", line 1
+    v,
+IndentationError: unexpected indent
+>>>             out,
+  File "<stdin>", line 1
+    out,
+IndentationError: unexpected indent
+>>>             softmax_lse,
+  File "<stdin>", line 1
+    softmax_lse,
+IndentationError: unexpected indent
+>>>             dqkv[:, :, 0],
+  File "<stdin>", line 1
+    dqkv[:, :, 0],
+IndentationError: unexpected indent
+>>>             dqkv[:, :, 1],
+  File "<stdin>", line 1
+    dqkv[:, :, 1],
+IndentationError: unexpected indent
+>>>             dqkv[:, :, 2],
+  File "<stdin>", line 1
+    dqkv[:, :, 2],
+IndentationError: unexpected indent
+>>>             ctx.dropout_p,
+  File "<stdin>", line 1
+    ctx.dropout_p,
+IndentationError: unexpected indent
+>>>             ctx.softmax_scale,
+  File "<stdin>", line 1
+    ctx.softmax_scale,
+IndentationError: unexpected indent
+>>>             ctx.causal,
+  File "<stdin>", line 1
+    ctx.causal,
+IndentationError: unexpected indent
+>>>             ctx.window_size[0],
+  File "<stdin>", line 1
+    ctx.window_size[0],
+IndentationError: unexpected indent
+>>>             ctx.window_size[1],
+  File "<stdin>", line 1
+    ctx.window_size[1],
+IndentationError: unexpected indent
+>>>             ctx.softcap,
+  File "<stdin>", line 1
+    ctx.softcap,
+IndentationError: unexpected indent
+>>>             ctx.alibi_slopes,
+  File "<stdin>", line 1
+    ctx.alibi_slopes,
+IndentationError: unexpected indent
+>>>             ctx.deterministic,
+  File "<stdin>", line 1
+    ctx.deterministic,
+IndentationError: unexpected indent
+>>>             rng_state=rng_state,
+  File "<stdin>", line 1
+    rng_state=rng_state,
+IndentationError: unexpected indent
+>>>         )
+  File "<stdin>", line 1
+    )
+IndentationError: unexpected indent
+>>>         dqkv = dqkv[..., : dout.shape[-1]]  # We could have padded the head dimension
+  File "<stdin>", line 1
+    dqkv = dqkv[..., : dout.shape[-1]]  # We could have padded the head dimension
+IndentationError: unexpected indent
+>>>         return dqkv, None, None, None, None, None, None, None, None, None
+  File "<stdin>", line 1
+    return dqkv, None, None, None, None, None, None, None, None, None
+IndentationError: unexpected indent
+>>> 
+>>> 
+>>> class FlashAttnVarlenQKVPackedFunc(torch.autograd.Function):
+...     @staticmethod
+...     def forward(
+...         ctx,
+...         qkv,
+...         cu_seqlens,
+...         max_seqlen,
+...         dropout_p,
+...         softmax_scale,
+...         causal,
+...         window_size,
+...         softcap,
+...         alibi_slopes,
+...         deterministic,
+...         return_softmax,
+...         is_grad_enabled,
+...     ):
+...         is_grad = is_grad_enabled and qkv.requires_grad
+...         if softmax_scale is None:
+...             softmax_scale = qkv.shape[-1] ** (-0.5)
+...         q, k, v = qkv[:, 0].detach(), qkv[:, 1].detach(), qkv[:, 2].detach()
+...         head_size_og = q.size(2)
+...         if head_size_og % 8 != 0:
+...             q = torch.nn.functional.pad(q, [0, 8 - head_size_og % 8])
+...             k = torch.nn.functional.pad(k, [0, 8 - head_size_og % 8])
+...             v = torch.nn.functional.pad(v, [0, 8 - head_size_og % 8])
+...         out_padded, softmax_lse, S_dmask, rng_state = _wrapped_flash_attn_varlen_forward(
+...             q,
+...             k,
+...             v,
+...             cu_seqlens,
+p...             cu_seqlens,
+...             max_seqlen,
+...             max_seqlen,
+...             dropout_p,
+...             softmax_scale,
+...             causal=causal,
+...             window_size_left=window_size[0],
+...             window_size_right=window_size[1],
+...             softcap=softcap,
+...             alibi_slopes=alibi_slopes,
+...             return_softmax=return_softmax and dropout_p > 0,
+...             block_table=None,
+...         )
+    ...         if is_grad:
+...             ctx.save_for_backward(q, k, v, out_padded, softmax_lse, cu_seqlens, rng_state)
+...             ctx.dropout_p = dropout_p
+...             ctx.max_seqlen = max_seqlen
+...             ctx.softmax_scale = softmax_scale
+...             ctx.causal = causal
+...             ctx.window_size = window_size
+...             ctx.softcap = softcap
+...             ctx.alibi_slopes = alibi_slopes
+...             ctx.deterministic = deterministic
+...         out = out_padded[..., :head_size_og]
+...         return out if not return_softmax else (out, softmax_lse, S_dmask)
+... 
+>>>     @staticmethod
+  File "<stdin>", line 1
+    @staticmethod
+IndentationError: unexpected indent
+>>>     def backward(ctx, dout, *args):
+  File "<stdin>", line 1
+    def backward(ctx, dout, *args):
+IndentationError: unexpected indent
+>>>         q, k, v, out, softmax_lse, cu_seqlens, rng_state = ctx.saved_tensors
+  File "<stdin>", line 1
+    q, k, v, out, softmax_lse, cu_seqlens, rng_state = ctx.saved_tensors
+IndentationError: unexpected indent
+>>>         qkv_shape = q.shape[:-2] + (3, *q.shape[-2:])
+  File "<stdin>", line 1
+    qkv_shape = q.shape[:-2] + (3, *q.shape[-2:])
+IndentationError: unexpected indent
+>>>         dqkv = torch.empty(qkv_shape, dtype=q.dtype, device=q.device)
+  File "<stdin>", line 1
+    dqkv = torch.empty(qkv_shape, dtype=q.dtype, device=q.device)
+IndentationError: unexpected indent
+>>>         head_size_og = dout.size(2)
+  File "<stdin>", line 1
+    head_size_og = dout.size(2)
+IndentationError: unexpected indent
+>>>         dout_padded = dout
+  File "<stdin>", line 1
+    dout_padded = dout
+IndentationError: unexpected indent
+>>>         if head_size_og % 8 != 0:
+  File "<stdin>", line 1
+    if head_size_og % 8 != 0:
+IndentationError: unexpected indent
+>>>             dout_padded = torch.nn.functional.pad(dout, [0, 8 - head_size_og % 8])
+  File "<stdin>", line 1
+    dout_padded = torch.nn.functional.pad(dout, [0, 8 - head_size_og % 8])
+IndentationError: unexpected indent
+>>>         _wrapped_flash_attn_varlen_backward(
+  File "<stdin>", line 1
+    _wrapped_flash_attn_varlen_backward(
+IndentationError: unexpected indent
+>>>             dout_padded,
+  File "<stdin>", line 1
+    dout_padded,
+IndentationError: unexpected indent
+>>>             q,
+  File "<stdin>", line 1
+    q,
+IndentationError: unexpected indent
+>>>             k,
+  File "<stdin>", line 1
+    k,
+IndentationError: unexpected indent
+>>>             v,
+  File "<stdin>", line 1
+    v,
+IndentationError: unexpected indent
+>>>             out,
+  File "<stdin>", line 1
+    out,
+IndentationError: unexpected indent
+>>>             softmax_lse,
+  File "<stdin>", line 1
+    softmax_lse,
+IndentationError: unexpected indent
+>>>             dqkv[:, 0],
+  File "<stdin>", line 1
+    dqkv[:, 0],
+IndentationError: unexpected indent
+>>>             dqkv[:, 1],
+  File "<stdin>", line 1
+    dqkv[:, 1],
+IndentationError: unexpected indent
+>>>             dqkv[:, 2],
+   File "<stdin>", line 1
+    dqkv[:, 2],
+IndentationError: unexpected indent
+>>>             cu_seqlens,
+  File "<stdin>", line 1
+    cu_seqlens,
+IndentationError: unexpected indent
+>>>             cu_seqlens,
+  File "<stdin>", line 1
+    cu_seqlens,
+IndentationError: unexpected indent
+>>>             ctx.max_seqlen,
+  File "<stdin>", line 1
+    ctx.max_seqlen,
+IndentationError: unexpected indent
+>>>             ctx.max_seqlen,
+  File "<stdin>", line 1
+    ctx.max_seqlen,
+IndentationError: unexpected indent
+>>>             ctx.dropout_p,
+  File "<stdin>", line 1
+    ctx.dropout_p,
+IndentationError: unexpected indent
+>>>             ctx.softmax_scale,
+  File "<stdin>", line 1
+    ctx.softmax_scale,
+IndentationError: unexpected indent
+>>>             ctx.causal,
+  File "<stdin>", line 1
+    ctx.causal,
+IndentationError: unexpected indent
+>>>             ctx.window_size[0],
+  File "<stdin>", line 1
+    ctx.window_size[0],
+IndentationError: unexpected indent
+>>>             ctx.window_size[1],
+  File "<stdin>", line 1
+    ctx.window_size[1],
+IndentationError: unexpected indent
+>>>             ctx.softcap,
+  File "<stdin>", line 1
+    ctx.softcap,
+IndentationError: unexpected indent
+>>>             ctx.alibi_slopes,
+  File "<stdin>", line 1
+    ctx.alibi_slopes,
+IndentationError: unexpected indent
+>>>             ctx.deterministic,
+  File "<stdin>", line 1
+    ctx.deterministic,
+IndentationError: unexpected indent
+>>>             rng_state=rng_state,
+  File "<stdin>", line 1
+    rng_state=rng_state,
+IndentationError: unexpected indent
+>>>         )
+  File "<stdin>", line 1
+    )
+IndentationError: unexpected indent
+>>>         dqkv = dqkv[..., : dout.shape[-1]]  # We could have padded the head dimension
+  File "<stdin>", line 1
+    dqkv = dqkv[..., : dout.shape[-1]]  # We could have padded the head dimension
+IndentationError: unexpected indent
+>>>         return dqkv, None, None, None, None, None, None, None, None, None, None, None
+  File "<stdin>", line 1
+    return dqkv, None, None, None, None, None, None, None, None, None, None, None
+IndentationError: unexpected indent
+>>> 
+>>> 
+>>> class FlashAttnKVPackedFunc(torch.autograd.Function):
+...     @staticmethod
+...     def forward(
+...         ctx,
+...         q,
+...         kv,
+...         dropout_p,
+h...         softmax_scale,
+...         causal,
+...         window_size,
+...         softcap,
+...         alibi_slopes,
+...         deterministic,
+...         return_softmax,
+...         is_grad_enabled,
+...     ):
+...         is_grad = is_grad_enabled and any(
+...             x.requires_grad for x in [q, kv]
+...         )
+...         if softmax_scale is None:
+...             softmax_scale = q.shape[-1] ** (-0.5)
+...         k, v = kv[:, :, 0].detach(), kv[:, :, 1].detach()
+...         head_size_og = q.size(3)
+...         if head_size_og % 8 != 0:
+...             q = torch.nn.functional.pad(q, [0, 8 - head_size_og % 8])
+...             k = torch.nn.functional.pad(k, [0, 8 - head_size_og % 8])
+...             v = torch.nn.functional.pad(v, [0, 8 - head_size_og % 8])
+...         out_padded, softmax_lse, S_dmask, rng_state = _wrapped_flash_attn_forward(
+...             q,
+...             k,
+...             v,
+...             dropout_p,
+...             softmax_scale,
+...             causal=causal,
+...             window_size_left=window_size[0],
+...             window_size_right=window_size[1],
+...             softcap=softcap,
+...             alibi_slopes=alibi_slopes,
+...             return_softmax=return_softmax and dropout_p > 0,
+...         )
+...         if is_grad:
+...             ctx.save_for_backward(q, k, v, out_padded, softmax_lse, rng_state)
+...             ctx.dropout_p = dropout_p
+...             ctx.softmax_scale = softmax_scale
+...             ctx.causal = causal
+...             ctx.window_size = window_size
+...             ctx.softcap = softcap
+...             ctx.alibi_slopes = alibi_slopes
+...             ctx.deterministic = deterministic
+...         out = out_padded[..., :head_size_og]
+...         return out if not return_softmax else (out, softmax_lse, S_dmask)
+... 
+>>>     @staticmethod
+  File "<stdin>", line 1
+    @staticmethod
+IndentationError: unexpected indent
+>>>     def backward(ctx, dout, *args):
+  File "<stdin>", line 1
+    def backward(ctx, dout, *args):
+IndentationError: unexpected indent
+>>>         q, k, v, out, softmax_lse, rng_state = ctx.saved_tensors
+  File "<stdin>", line 1
+    q, k, v, out, softmax_lse, rng_state = ctx.saved_tensors
+IndentationError: unexpected indent
+>>>         dq = torch.empty_like(q)
+  File "<stdin>", line 1
+    dq = torch.empty_like(q)
+IndentationError: unexpected indent
+>>>         kv_shape = k.shape[:-2] + (2, *k.shape[-2:])
+  File "<stdin>", line 1
+    kv_shape = k.shape[:-2] + (2, *k.shape[-2:])
+IndentationError: unexpected indent
+>>>         dkv = torch.empty(kv_shape, dtype=k.dtype, device=k.device)
+  File "<stdin>", line 1
+    dkv = torch.empty(kv_shape, dtype=k.dtype, device=k.device)
+IndentationError: unexpected indent
+>>>         head_size_og = dout.size(3)
+  File "<stdin>", line 1
+    head_size_og = dout.size(3)
+IndentationError: unexpected indent
+>>>         dout_padded = dout
+  File "<stdin>", line 1
+    dout_padded = dout
+IndentationError: unexpected indent
+>>>         if head_size_og % 8 != 0:
+  File "<stdin>", line 1
+    if head_size_og % 8 != 0:
+IndentationError: unexpected indent
+>>>             dout_padded = torch.nn.functional.pad(dout, [0, 8 - head_size_og % 8])
+  File "<stdin>", line 1
+    dout_padded = torch.nn.functional.pad(dout, [0, 8 - head_size_og % 8])
+IndentationError: unexpected indent
+>>>         _wrapped_flash_attn_backward(
+  File "<stdin>", line 1
+    _wrapped_flash_attn_backward(
+IndentationError: unexpected indent
+>>>             dout_padded,
+  File "<stdin>", line 1
+    dout_padded,
+IndentationError: unexpected indent
+>>>             q,
+  File "<stdin>", line 1
+    q,
+IndentationError: unexpected indent
+>>>             k,
+  File "<stdin>", line 1
+    k,
+IndentationError: unexpected indent
+>>>             v,
+  File "<stdin>", line 1
+    v,
+IndentationError: unexpected indent
+>>>             out,
+  File "<stdin>", line 1
+    out,
+IndentationError: unexpected indent
+>>>             softmax_lse,
+  File "<stdin>", line 1
+    softmax_lse,
+IndentationError: unexpected indent
+>>>             dq,
+  File "<stdin>", line 1
+    dq,
+IndentationError: unexpected indent
+>>>             dkv[:, :, 0],
+  File "<stdin>", line 1
+    dkv[:, :, 0],
+IndentationError: unexpected indent
+>>>             dkv[:, :, 1],
+  File "<stdin>", line 1
+    dkv[:, :, 1],
+IndentationError: unexpected indent
+>>>             ctx.dropout_p,
+  File "<stdin>", line 1
+    ctx.dropout_p,
+IndentationError: unexpected indent
+>>>             ctx.softmax_scale,
+  File "<stdin>", line 1
+    ctx.softmax_scale,
+IndentationError: unexpected indent
+>>>             ctx.causal,
+  File "<stdin>", line 1
+    ctx.causal,
+IndentationError: unexpected indent
+>>>             ctx.window_size[0],
+  File "<stdin>", line 1
+    ctx.window_size[0],
+IndentationError: unexpected indent
+>>>             ctx.window_size[1],
+  File "<stdin>", line 1
+    ctx.window_size[1],
+IndentationError: unexpected indent
+>>>             ctx.softcap,
+  File "<stdin>", line 1
+    ctx.softcap,
+IndentationError: unexpected indent
+>>>             ctx.alibi_slopes,
+  File "<stdin>", line 1
+    ctx.alibi_slopes,
+IndentationError: unexpected indent
+>>>             ctx.deterministic,
+  File "<stdin>", line 1
+    ctx.deterministic,
+IndentationError: unexpected indent
+>>>             rng_state=rng_state,
+  File "<stdin>", line 1
+    rng_state=rng_state,
+IndentationError: unexpected indent
+>>>         )
+  File "<stdin>", line 1
+    )
+IndentationError: unexpected indent
+>>>         dq = dq[..., : dout.shape[-1]]  # We could have padded the head dimension
+  File "<stdin>", line 1
+    dq = dq[..., : dout.shape[-1]]  # We could have padded the head dimension
+IndentationError: unexpected indent
+>>>         dkv = dkv[..., : dout.shape[-1]]
+  File "<stdin>", line 1
+    dkv = dkv[..., : dout.shape[-1]]
+IndentationError: unexpected indent
+>>>         return dq, dkv, None, None, None, None, None, None, None, None, None
+  File "<stdin>", line 1
+    return dq, dkv, None, None, None, None, None, None, None, None, None
+IndentationError: unexpected indent
+>>> 
+>>> 
+>>> class FlashAttnVarlenKVPackedFunc(torch.autograd.Function):
+...     @staticmethod
+...     def forward(
+...         ctx,
+...         q,
+...         kv,
+...         cu_seqlens_q,
+...         cu_seqlens_k,
+...         max_seqlen_q,
+...         max_seqlen_k,
+...         dropout_p,
+...         softmax_scale,
+...         causal,
+...         window_size,
+...         softcap,
+...         alibi_slopes,
+...         deterministic,
+...         return_softmax,
+...         is_grad_enabled,
+...     ):
+...         is_grad = is_grad_enabled and any(
+...             x.requires_grad for x in [q, kv]
+...         )
+...         if softmax_scale is None:
+...             softmax_scale = q.shape[-1] ** (-0.5)
+...         k, v = kv[:, 0].detach(), kv[:, 1].detach()
+...         head_size_og = q.size(2)
+...         if head_size_og % 8 != 0:
+...             q = torch.nn.functional.pad(q, [0, 8 - head_size_og % 8])
+...             k = torch.nn.functional.pad(k, [0, 8 - head_size_og % 8])
+...             v = torch.nn.functional.pad(v, [0, 8 - head_size_og % 8])
+...         out_padded, softmax_lse, S_dmask, rng_state = _wrapped_flash_attn_varlen_forward(
+...             q,
+...             k,
+...             v,
+...             cu_seqlens_q,
+...             cu_seqlens_k,
+...             max_seqlen_q,
+...             max_seqlen_k,
+...             dropout_p,
+...             softmax_scale,
+...             causal=causal,
+...             window_size_left=window_size[0],
+...             window_size_right=window_size[1],
+...             softcap=softcap,
+...             alibi_slopes=alibi_slopes,
+...             return_softmax=return_softmax and dropout_p > 0,
+...             block_table=None,
+...         )
+...         if is_grad:
+...             ctx.save_for_backward(
+...                 q, k, v, out_padded, softmax_lse, cu_seqlens_q, cu_seqlens_k, rng_state
+...             )
+...             ctx.dropout_p = dropout_p
+...             ctx.max_seqlen_q = max_seqlen_q
+...             ctx.max_seqlen_k = max_seqlen_k
+...             ctx.softmax_scale = softmax_scale
+...             ctx.causal = causal
+...             ctx.window_size = window_size
+...             ctx.softcap = softcap
+...             ctx.alibi_slopes = alibi_slopes
+...             ctx.deterministic = deterministic
+...         out = out_padded[..., :head_size_og]
+...         return out if not return_softmax else (out, softmax_lse, S_dmask)
+... 
+>>>     @staticmethod
+  File "<stdin>", line 1
+    @staticmethod
+IndentationError: unexpected indent
+>>>     def backward(ctx, dout, *args):
+  File "<stdin>", line 1
+    def backward(ctx, dout, *args):
+IndentationError: unexpected indent
+>>>         q, k, v, out, softmax_lse, cu_seqlens_q, cu_seqlens_k, rng_state = ctx.saved_tensors
+  File "<stdin>", line 1
+    q, k, v, out, softmax_lse, cu_seqlens_q, cu_seqlens_k, rng_state = ctx.saved_tensors
+IndentationError: unexpected indent
+>>>         dq = torch.empty_like(q)
+  File "<stdin>", line 1
+    dq = torch.empty_like(q)
+IndentationError: unexpected indent
+>>>         kv_shape = k.shape[:-2] + (2, *k.shape[-2:])
+  File "<stdin>", line 1
+    kv_shape = k.shape[:-2] + (2, *k.shape[-2:])
+IndentationError: unexpected indent
+>>>         dkv = torch.empty(kv_shape, dtype=k.dtype, device=k.device)
+  File "<stdin>", line 1
+    dkv = torch.empty(kv_shape, dtype=k.dtype, device=k.device)
+IndentationError: unexpected indent
+>>>         head_size_og = dout.size(2)
+  File "<stdin>", line 1
+    head_size_og = dout.size(2)
+IndentationError: unexpected indent
+>>>         dout_padded = dout
+  File "<stdin>", line 1
+    dout_padded = dout
+IndentationError: unexpected indent
+>>>         if head_size_og % 8 != 0:
+  File "<stdin>", line 1
+    if head_size_og % 8 != 0:
+IndentationError: unexpected indent
+>>>             dout_padded = torch.nn.functional.pad(dout, [0, 8 - head_size_og % 8])
+  File "<stdin>", line 1
+    dout_padded = torch.nn.functional.pad(dout, [0, 8 - head_size_og % 8])
+IndentationError: unexpected indent
+>>>         _wrapped_flash_attn_varlen_backward(
+  File "<stdin>", line 1
+    _wrapped_flash_attn_varlen_backward(
+IndentationError: unexpected indent
+>>>             dout_padded,
+  File "<stdin>", line 1
+    dout_padded,
+IndentationError: unexpected indent
+>>>             q,
+  File "<stdin>", line 1
+    q,
+IndentationError: unexpected indent
+>>>             k,
+  File "<stdin>", line 1
+    k,
+IndentationError: unexpected indent
+>>>             v,
+c  File "<stdin>", line 1
+    v,
+IndentationError: unexpected indent
+>>>             out,
+  File "<stdin>", line 1
+    out,
+IndentationError: unexpected indent
+>>>             softmax_lse,
+  File "<stdin>", line 1
+    softmax_lse,
+IndentationError: unexpected indent
+>>>             dq,
+  File "<stdin>", line 1
+    dq,
+IndentationError: unexpected indent
+>>>             dkv[:, 0],
+  File "<stdin>", line 1
+    dkv[:, 0],
+IndentationError: unexpected indent
+>>>             dkv[:, 1],
+  File "<stdin>", line 1
+    dkv[:, 1],
+IndentationError: unexpected indent
+>>>             cu_seqlens_q,
+  File "<stdin>", line 1
+    cu_seqlens_q,
+IndentationError: unexpected indent
+>>>             cu_seqlens_k,
+  File "<stdin>", line 1
+    cu_seqlens_k,
+IndentationError: unexpected indent
+>>>             ctx.max_seqlen_q,
+  File "<stdin>", line 1
+    ctx.max_seqlen_q,
+IndentationError: unexpected indent
+>>>             ctx.max_seqlen_k,
+  File "<stdin>", line 1
+    ctx.max_seqlen_k,
+IndentationError: unexpected indent
+>>>             ctx.dropout_p,
+   File "<stdin>", line 1
+    ctx.dropout_p,
+IndentationError: unexpected indent
+>>>             ctx.softmax_scale,
+  File "<stdin>", line 1
+    ctx.softmax_scale,
+IndentationError: unexpected indent
+>>>             ctx.causal,
+  File "<stdin>", line 1
+    ctx.causal,
+IndentationError: unexpected indent
+>>>             ctx.window_size[0],
+e  File "<stdin>", line 1
+    ctx.window_size[0],
+IndentationError: unexpected indent
+>>>             ctx.window_size[1],
+  File "<stdin>", line 1
+    ctx.window_size[1],
+IndentationError: unexpected indent
+>>>             ctx.softcap,
+  File "<stdin>", line 1
+    ctx.softcap,
+IndentationError: unexpected indent
+>>>             ctx.alibi_slopes,
+  File "<stdin>", line 1
+    ctx.alibi_slopes,
+IndentationError: unexpected indent
+>>>             ctx.deterministic,
+  File "<stdin>", line 1
+    ctx.deterministic,
+IndentationError: unexpected indent
+>>>             rng_state=rng_state,
+  File "<stdin>", line 1
+    rng_state=rng_state,
+IndentationError: unexpected indent
+>>>         )
+  File "<stdin>", line 1
+    )
+IndentationError: unexpected indent
+>>>         dq = dq[..., : dout.shape[-1]]  # We could have padded the head dimension
+  File "<stdin>", line 1
+    dq = dq[..., : dout.shape[-1]]  # We could have padded the head dimension
+IndentationError: unexpected indent
+>>>         dkv = dkv[..., : dout.shape[-1]]
+  File "<stdin>", line 1
+    dkv = dkv[..., : dout.shape[-1]]
+IndentationError: unexpected indent
+>>>         return dq, dkv, None, None, None, None, None, None, None, None, None, None, None, None, None
+  File "<stdin>", line 1
+    return dq, dkv, None, None, None, None, None, None, None, None, None, None, None, None, None
+IndentationError: unexpected indent
+>>> 
+>>> 
+>>> class FlashAttnFunc(torch.autograd.Function):
+...     @staticmethod
+...     def forward(
+...         ctx,
+...         q,
+...         k,
+...         v,
+...         dropout_p,
+...         softmax_scale,
+...         causal,
+...         window_size,
+...         softcap,
+a...         alibi_slopes,
+v...         deterministic,
+...         return_softmax,
+...         is_grad_enabled,
+...     ):
+,...         is_grad = is_grad_enabled and any(
+...             x.requires_grad for x in [q, k, v]
+...         )
+q...         if softmax_scale is None:
+...             softmax_scale = q.shape[-1] ** (-0.5)
+...         head_size_og = q.size(3)
+...         if head_size_og % 8 != 0:
+ ...             q = torch.nn.functional.pad(q, [0, 8 - head_size_og % 8])
+...             k = torch.nn.functional.pad(k, [0, 8 - head_size_og % 8])
+...             v = torch.nn.functional.pad(v, [0, 8 - head_size_og % 8])
+...         out_padded, softmax_lse, S_dmask, rng_state = _wrapped_flash_attn_forward(
+...             q,
+...             k,
+...             v,
+...             dropout_p,
+...             softmax_scale,
+...             causal=causal,
+v...             window_size_left=window_size[0],
+...             window_size_right=window_size[1],
+...             softcap=softcap,
+...             alibi_slopes=alibi_slopes,
+...             return_softmax=return_softmax and dropout_p > 0,
+...         )
+c...         if is_grad:
+...             ctx.save_for_backward(q, k, v, out_padded, softmax_lse, rng_state)
+...             ctx.dropout_p = dropout_p
+...             ctx.softmax_scale = softmax_scale
+...             ctx.causal = causal
+...             ctx.window_size = window_size
+...             ctx.softcap = softcap
+...             ctx.alibi_slopes = alibi_slopes
+...             ctx.deterministic = deterministic
+...         out = out_padded[..., :head_size_og]
+...         return out if not return_softmax else (out, softmax_lse, S_dmask)
+... 
+>>>     @staticmethod
+  File "<stdin>", line 1
+    @staticmethod
+IndentationError: unexpected indent
+>>>     def backward(ctx, dout, *args):
+  File "<stdin>", line 1
+    def backward(ctx, dout, *args):
+IndentationError: unexpected indent
+>>>         q, k, v, out, softmax_lse, rng_state = ctx.saved_tensors
+  File "<stdin>", line 1
+    q, k, v, out, softmax_lse, rng_state = ctx.saved_tensors
+IndentationError: unexpected indent
+>>>         dq, dk, dv = torch.empty_like(q), torch.empty_like(k), torch.empty_like(v)
+  File "<stdin>", line 1
+    dq, dk, dv = torch.empty_like(q), torch.empty_like(k), torch.empty_like(v)
+IndentationError: unexpected indent
+>>>         head_size_og = dout.size(3)
+  File "<stdin>", line 1
+    head_size_og = dout.size(3)
+IndentationError: unexpected indent
+>>>         dout_padded = dout
+  File "<stdin>", line 1
+    dout_padded = dout
+IndentationError: unexpected indent
+>>>         if head_size_og % 8 != 0:
+  File "<stdin>", line 1
+    if head_size_og % 8 != 0:
+IndentationError: unexpected indent
+>>>             dout_padded = torch.nn.functional.pad(dout, [0, 8 - head_size_og % 8])
+  File "<stdin>", line 1
+    dout_padded = torch.nn.functional.pad(dout, [0, 8 - head_size_og % 8])
+IndentationError: unexpected indent
+>>>         _wrapped_flash_attn_backward(
+  File "<stdin>", line 1
+    _wrapped_flash_attn_backward(
+IndentationError: unexpected indent
+>>>             dout_padded,
+  File "<stdin>", line 1
+    dout_padded,
+IndentationError: unexpected indent
+>>>             q,
+  File "<stdin>", line 1
+    q,
+IndentationError: unexpected indent
+>>>             k,
+  File "<stdin>", line 1
+    k,
+IndentationError: unexpected indent
+>>>             v,
+  File "<stdin>", line 1
+    v,
+IndentationError: unexpected indent
+>>>             out,
+  File "<stdin>", line 1
+    out,
+IndentationError: unexpected indent
+>>>             softmax_lse,
+  File "<stdin>", line 1
+    softmax_lse,
+IndentationError: unexpected indent
+>>>             dq,
+  File "<stdin>", line 1
+    dq,
+IndentationError: unexpected indent
+>>>             dk,
+  File "<stdin>", line 1
+    dk,
+IndentationError: unexpected indent
+>>>             dv,
+  File "<stdin>", line 1
+    dv,
+IndentationError: unexpected indent
+>>>             ctx.dropout_p,
+t  File "<stdin>", line 1
+    ctx.dropout_p,
+IndentationError: unexpected indent
+>>>             ctx.softmax_scale,
+  File "<stdin>", line 1
+    ctx.softmax_scale,
+IndentationError: unexpected indent
+>>>             ctx.causal,
+  File "<stdin>", line 1
+    ctx.causal,
+IndentationError: unexpected indent
+>>>             ctx.window_size[0],
+  File "<stdin>", line 1
+    ctx.window_size[0],
+IndentationError: unexpected indent
+>>>             ctx.window_size[1],
+  File "<stdin>", line 1
+    ctx.window_size[1],
+IndentationError: unexpected indent
+>>>             ctx.softcap,
+  File "<stdin>", line 1
+    ctx.softcap,
+IndentationError: unexpected indent
+>>>             ctx.alibi_slopes,
+  File "<stdin>", line 1
+    ctx.alibi_slopes,
+IndentationError: unexpected indent
+>>>             ctx.deterministic,
+  File "<stdin>", line 1
+    ctx.deterministic,
+IndentationError: unexpected indent
+>>>             rng_state=rng_state,
+  File "<stdin>", line 1
+    rng_state=rng_state,
+IndentationError: unexpected indent
+>>>         )
+n  File "<stdin>", line 1
+    )
+IndentationError: unexpected indent
+>>>         dq = dq[..., : dout.shape[-1]]  # We could have padded the head dimension
+  File "<stdin>", line 1
+    dq = dq[..., : dout.shape[-1]]  # We could have padded the head dimension
+IndentationError: unexpected indent
+>>>         dk = dk[..., : dout.shape[-1]]
+  File "<stdin>", line 1
+    dk = dk[..., : dout.shape[-1]]
+IndentationError: unexpected indent
+>>>         dv = dv[..., : dout.shape[-1]]
+  File "<stdin>", line 1
+    dv = dv[..., : dout.shape[-1]]
+IndentationError: unexpected indent
+>>>         return dq, dk, dv, None, None, None, None, None, None, None, None, None
+  File "<stdin>", line 1
+    return dq, dk, dv, None, None, None, None, None, None, None, None, None
+IndentationError: unexpected indent
+>>> 
+>>> 
+>>> class FlashAttnVarlenFunc(torch.autograd.Function):
+...     @staticmethod
+...     def forward(
+ ...         ctx,
+...         q,
+...         k,
+...         v,
+...         cu_seqlens_q,
+...         cu_seqlens_k,
+m...         max_seqlen_q,
+...         max_seqlen_k,
+...         dropout_p,
+...         softmax_scale,
+...         causal,
+...         window_size,
+...         softcap,
+...         alibi_slopes,
+...         deterministic,
+...         return_softmax,
+...         block_table,
+...         is_grad_enabled,
+t...     ):
+...         is_grad = is_grad_enabled and any(
+...             x.requires_grad for x in [q, k, v]
+...         )
+...         if softmax_scale is None:
+...             softmax_scale = q.shape[-1] ** (-0.5)
+...         head_size_og = q.size(2)
+a...         if head_size_og % 8 != 0:
+...             q = torch.nn.functional.pad(q, [0, 8 - head_size_og % 8])
+...             k = torch.nn.functional.pad(k, [0, 8 - head_size_og % 8])
+...             v = torch.nn.functional.pad(v, [0, 8 - head_size_og % 8])
+...         out_padded, softmax_lse, S_dmask, rng_state = _wrapped_flash_attn_varlen_forward(
+...             q,
+...             k,
+...             v,
+...             cu_seqlens_q,
+...             cu_seqlens_k,
+...             max_seqlen_q,
+...             max_seqlen_k,
+...             dropout_p,
+...             softmax_scale,
+...             causal=causal,
+...             window_size_left=window_size[0],
+...             window_size_right=window_size[1],
+...             softcap=softcap,
+...             alibi_slopes=alibi_slopes,
+...             return_softmax=return_softmax and dropout_p > 0,
+...             block_table=block_table,
+...         )
+i...         if is_grad:
+...             ctx.save_for_backward(
+...                 q, k, v, out_padded, softmax_lse, cu_seqlens_q, cu_seqlens_k, rng_state
+...             )
+...             ctx.dropout_p = dropout_p
+...             ctx.max_seqlen_q = max_seqlen_q
+...             ctx.max_seqlen_k = max_seqlen_k
+...             ctx.softmax_scale = softmax_scale
+...             ctx.causal = causal
+...             ctx.window_size = window_size
+...             ctx.softcap = softcap
+...             ctx.alibi_slopes = alibi_slopes
+...             ctx.deterministic = deterministic
+... 
+>>>         out = out_padded[..., :head_size_og]
+  File "<stdin>", line 1
+    out = out_padded[..., :head_size_og]
+IndentationError: unexpected indent
+>>>         return out if not return_softmax else (out, softmax_lse, S_dmask)
+  File "<stdin>", line 1
+    return out if not return_softmax else (out, softmax_lse, S_dmask)
+IndentationError: unexpected indent
+>>> 
+>>>     @staticmethod
+  File "<stdin>", line 1
+    @staticmethod
+IndentationError: unexpected indent
+>>>     def backward(ctx, dout, *args):
+  File "<stdin>", line 1
+    def backward(ctx, dout, *args):
+IndentationError: unexpected indent
+>>>         q, k, v, out, softmax_lse, cu_seqlens_q, cu_seqlens_k, rng_state = ctx.saved_tensors
+  File "<stdin>", line 1
+    q, k, v, out, softmax_lse, cu_seqlens_q, cu_seqlens_k, rng_state = ctx.saved_tensors
+IndentationError: unexpected indent
+>>>         dq, dk, dv = torch.empty_like(q), torch.empty_like(k), torch.empty_like(v)
+  File "<stdin>", line 1
+    dq, dk, dv = torch.empty_like(q), torch.empty_like(k), torch.empty_like(v)
+IndentationError: unexpected indent
+>>>         head_size_og = dout.size(2)
+  File "<stdin>", line 1
+    head_size_og = dout.size(2)
+IndentationError: unexpected indent
+>>>         dout_padded = dout
+   File "<stdin>", line 1
+    dout_padded = dout
+IndentationError: unexpected indent
+>>>         if head_size_og % 8 != 0:
+  File "<stdin>", line 1
+    if head_size_og % 8 != 0:
+IndentationError: unexpected indent
+>>>             dout_padded = torch.nn.functional.pad(dout, [0, 8 - head_size_og % 8])
+  File "<stdin>", line 1
+    dout_padded = torch.nn.functional.pad(dout, [0, 8 - head_size_og % 8])
+IndentationError: unexpected indent
+>>>         _wrapped_flash_attn_varlen_backward(
+  File "<stdin>", line 1
+    _wrapped_flash_attn_varlen_backward(
+IndentationError: unexpected indent
+>>>             dout_padded,
+  File "<stdin>", line 1
+    dout_padded,
+IndentationError: unexpected indent
+>>>             q,
+  File "<stdin>", line 1
+    q,
+IndentationError: unexpected indent
+>>>             k,
+  File "<stdin>", line 1
+    k,
+IndentationError: unexpected indent
+>>>             v,
+   File "<stdin>", line 1
+    v,
+IndentationError: unexpected indent
+>>>             out,
+  File "<stdin>", line 1
+    out,
+IndentationError: unexpected indent
+>>>             softmax_lse,
+  File "<stdin>", line 1
+    softmax_lse,
+IndentationError: unexpected indent
+>>>             dq,
+  File "<stdin>", line 1
+    dq,
+IndentationError: unexpected indent
+>>>             dk,
+  File "<stdin>", line 1
+    dk,
+IndentationError: unexpected indent
+>>>             dv,
+  File "<stdin>", line 1
+    dv,
+IndentationError: unexpected indent
+>>>             cu_seqlens_q,
+  File "<stdin>", line 1
+    cu_seqlens_q,
+IndentationError: unexpected indent
+>>>             cu_seqlens_k,
+  File "<stdin>", line 1
+    cu_seqlens_k,
+IndentationError: unexpected indent
+>>>             ctx.max_seqlen_q,
+  File "<stdin>", line 1
+    ctx.max_seqlen_q,
+IndentationError: unexpected indent
+>>>             ctx.max_seqlen_k,
+  File "<stdin>", line 1
+    ctx.max_seqlen_k,
+IndentationError: unexpected indent
+>>>             ctx.dropout_p,
+  File "<stdin>", line 1
+    ctx.dropout_p,
+IndentationError: unexpected indent
+>>>             ctx.softmax_scale,
+  File "<stdin>", line 1
+    ctx.softmax_scale,
+IndentationError: unexpected indent
+>>>             ctx.causal,
+  File "<stdin>", line 1
+    ctx.causal,
+IndentationError: unexpected indent
+>>>             ctx.window_size[0],
+  File "<stdin>", line 1
+    ctx.window_size[0],
+IndentationError: unexpected indent
+>>>             ctx.window_size[1],
+  File "<stdin>", line 1
+    ctx.window_size[1],
+IndentationError: unexpected indent
+>>>             ctx.softcap,
+  File "<stdin>", line 1
+    ctx.softcap,
+IndentationError: unexpected indent
+>>>             ctx.alibi_slopes,
+  File "<stdin>", line 1
+    ctx.alibi_slopes,
+IndentationError: unexpected indent
+>>>             ctx.deterministic,
+  File "<stdin>", line 1
+    ctx.deterministic,
+IndentationError: unexpected indent
+>>>             rng_state=rng_state,
+  File "<stdin>", line 1
+    rng_state=rng_state,
+IndentationError: unexpected indent
+>>>         )
+f  File "<stdin>", line 1
+    )
+IndentationError: unexpected indent
+>>>         dq = dq[..., : dout.shape[-1]]  # We could have padded the head dimension
+  File "<stdin>", line 1
+    dq = dq[..., : dout.shape[-1]]  # We could have padded the head dimension
+IndentationError: unexpected indent
+>>>         dk = dk[..., : dout.shape[-1]]
+  File "<stdin>", line 1
+    dk = dk[..., : dout.shape[-1]]
+IndentationError: unexpected indent
+>>>         dv = dv[..., : dout.shape[-1]]
+  File "<stdin>", line 1
+    dv = dv[..., : dout.shape[-1]]
+IndentationError: unexpected indent
+>>>         return dq, dk, dv, None, None, None, None, None, None, None, None, None, None, None, None, None, None
+  File "<stdin>", line 1
+    return dq, dk, dv, None, None, None, None, None, None, None, None, None, None, None, None, None, None
+IndentationError: unexpected indent
+>>> 
+>>> 
+>>> def flash_attn_qkvpacked_func(
+...     qkv,
+...     dropout_p=0.0,
+...     softmax_scale=None,
+...     causal=False,
+...     window_size=(-1, -1),  # -1 means infinite context window
+...     softcap=0.0,  # <=0.0 means deactivate
+...     alibi_slopes=None,
+...     deterministic=False,
+...     return_attn_probs=False,
+... ):
+...     """dropout_p should be set to 0.0 during evaluation
+...     If Q, K, V are already stacked into 1 tensor, this function will be faster than
+...     calling flash_attn_func on Q, K, V since the backward pass avoids explicit concatenation
+...     of the gradients of Q, K, V.
+...     For multi-query and grouped-query attention (MQA/GQA), please see
+...     flash_attn_kvpacked_func and flash_attn_func.
+... 
+...     If window_size != (-1, -1), implements sliding window local attention. Query at position i
+...     will only attend to keys between [i - window_size[0], i + window_size[1]] inclusive.
+... 
+...     Arguments:
+...         qkv: (batch_size, seqlen, 3, nheads, headdim)
+...         dropout_p: float. Dropout probability.
+...         softmax_scale: float. The scaling of QK^T before applying softmax.
+...             Default to 1 / sqrt(headdim).
+...         causal: bool. Whether to apply causal attention mask (e.g., for auto-regressive modeling).
+...         window_size: (left, right). If not (-1, -1), implements sliding window local attention.
+...         softcap: float. Anything > 0 activates softcapping attention.
+...         alibi_slopes: (nheads,) or (batch_size, nheads), fp32. A bias of (-alibi_slope * |i - j|) is added to
+...             the attention score of query i and key j.
+...         deterministic: bool. Whether to use the deterministic implementation of the backward pass,
+...             which is slightly slower and uses more memory. The forward pass is always deterministic.
+...         return_attn_probs: bool. Whether to return the attention probabilities. This option is for
+...            testing only. The returned probabilities are not guaranteed to be correct
+...            (they might not have the right scaling).
+...     Return:
+...         out: (batch_size, seqlen, nheads, headdim).
+...         softmax_lse [optional, if return_attn_probs=True]: (batch_size, nheads, seqlen). The
+...             logsumexp of each row of the matrix QK^T * scaling (e.g., log of the softmax
+...             normalization factor).
+...         S_dmask [optional, if return_attn_probs=True]: (batch_size, nheads, seqlen, seqlen).
+...             The output of softmax (possibly with different scaling). It also encodes the dropout
+...             pattern (negative means that location was dropped, nonnegative means it was kept).
+...     """
+i...     return FlashAttnQKVPackedFunc.apply(
+...         qkv,
+...         dropout_p,
+...         softmax_scale,
+...         causal,
+...         window_size,
+...         softcap,
+...         alibi_slopes,
+...         deterministic,
+...         return_attn_probs,
+...         torch.is_grad_enabled(),
+...     )
+e... 
+>>> 
+>>> def flash_attn_kvpacked_func(
+...     q,
+ ...     kv,
+...     dropout_p=0.0,
+...     softmax_scale=None,
+...     causal=False,
+i...     window_size=(-1, -1),  # -1 means infinite context window
+...     softcap=0.0,  # 0.0 means deactivated
+...     alibi_slopes=None,
+...     deterministic=False,
+...     return_attn_probs=False,
+... ):
+...     """dropout_p should be set to 0.0 during evaluation
+...     If K, V are already stacked into 1 tensor, this function will be faster than
+...     calling flash_attn_func on Q, K, V since the backward pass avoids explicit concatenation
+...     of the gradients of K, V.
+...     Supports multi-query and grouped-query attention (MQA/GQA) by passing in KV with fewer heads
+...     than Q. Note that the number of heads in Q must be divisible by the number of heads in KV.
+...     For example, if Q has 6 heads and K, V have 2 heads, head 0, 1, 2 of Q will attention to head
+...     0 of K, V, and head 3, 4, 5 of Q will attention to head 1 of K, V.
+... 
+)...     If causal=True, the causal mask is aligned to the bottom right corner of the attention matrix.
+...     For example, if seqlen_q = 2 and seqlen_k = 5, the causal mask (1 = keep, 0 = masked out) is:
+...         1 1 1 1 0
+g...         1 1 1 1 1
+ ...     If seqlen_q = 5 and seqlen_k = 2, the causal mask is:
+...         0 0
+...         0 0
+...         0 0
+...         1 0
+...         1 1
+...     If the row of the mask is all zero, the output will be zero.
+... 
+)...     If window_size != (-1, -1), implements sliding window local attention. Query at position i
+...     will only attend to keys between
+...     [i + seqlen_k - seqlen_q - window_size[0], i + seqlen_k - seqlen_q + window_size[1]] inclusive.
+... 
+...     Arguments:
+...         q: (batch_size, seqlen, nheads, headdim)
+...         kv: (batch_size, seqlen, 2, nheads_k, headdim)
+...         dropout_p: float. Dropout probability.
+...         softmax_scale: float. The scaling of QK^T before applying softmax.
+...             Default to 1 / sqrt(headdim).
+...         causal: bool. Whether to apply causal attention mask (e.g., for auto-regressive modeling).
+...         window_size: (left, right). If not (-1, -1), implements sliding window local attention.
+...         softcap: float. Anything > 0 activates softcapping attention.
+...         alibi_slopes: (nheads,) or (batch_size, nheads), fp32. A bias of
+...             (-alibi_slope * |i + seqlen_k - seqlen_q - j|)
+...             is added to the attention score of query i and key j.
+...         deterministic: bool. Whether to use the deterministic implementation of the backward pass,
+...             which is slightly slower and uses more memory. The forward pass is always deterministic.
+...         return_attn_probs: bool. Whether to return the attention probabilities. This option is for
+...            testing only. The returned probabilities are not guaranteed to be correct
+...            (they might not have the right scaling).
+...     Return:
+i...         out: (batch_size, seqlen, nheads, headdim).
+...         softmax_lse [optional, if return_attn_probs=True]: (batch_size, nheads, seqlen). The
+...             logsumexp of each row of the matrix QK^T * scaling (e.g., log of the softmax
+...             normalization factor).
+...         S_dmask [optional, if return_attn_probs=True]: (batch_size, nheads, seqlen, seqlen).
+...             The output of softmax (possibly with different scaling). It also encodes the dropout
+...             pattern (negative means that location was dropped, nonnegative means it was kept).
+...     """
+n...     return FlashAttnKVPackedFunc.apply(
+...         q,
+c...         kv,
+...         dropout_p,
+...         softmax_scale,
+...         causal,
+...         window_size,
+...         softcap,
+...         alibi_slopes,
+...         deterministic,
+...         return_attn_probs,
+...         torch.is_grad_enabled(),
+...     )
+... 
+>>> 
+>>> def flash_attn_func(
+...     q,
+...     k,
+m...     v,
+...     dropout_p=0.0,
+...     softmax_scale=None,
+...     causal=False,
+...     window_size=(-1, -1),  # -1 means infinite context window
+...     softcap=0.0, # 0.0 means deactivated
+...     alibi_slopes=None,
+...     deterministic=False,
+...     return_attn_probs=False,
+... ):
+...     """dropout_p should be set to 0.0 during evaluation
+...     Supports multi-query and grouped-query attention (MQA/GQA) by passing in KV with fewer heads
+...     than Q. Note that the number of heads in Q must be divisible by the number of heads in KV.
+...     For example, if Q has 6 heads and K, V have 2 heads, head 0, 1, 2 of Q will attention to head
+...     0 of K, V, and head 3, 4, 5 of Q will attention to head 1 of K, V.
+... 
+...     If causal=True, the causal mask is aligned to the bottom right corner of the attention matrix.
+...     For example, if seqlen_q = 2 and seqlen_k = 5, the causal mask (1 = keep, 0 = masked out) is:
+...         1 1 1 1 0
+...         1 1 1 1 1
+...     If seqlen_q = 5 and seqlen_k = 2, the causal mask is:
+...         0 0
+...         0 0
+...         0 0
+...         1 0
+ ...         1 1
+...     If the row of the mask is all zero, the output will be zero.
+... 
+...     If window_size != (-1, -1), implements sliding window local attention. Query at position i
+...     will only attend to keys between
+...     [i + seqlen_k - seqlen_q - window_size[0], i + seqlen_k - seqlen_q + window_size[1]] inclusive.
+... 
+t...     Arguments:
+...         q: (batch_size, seqlen, nheads, headdim)
+...         k: (batch_size, seqlen, nheads_k, headdim)
+...         v: (batch_size, seqlen, nheads_k, headdim)
+...         dropout_p: float. Dropout probability.
+...         softmax_scale: float. The scaling of QK^T before applying softmax.
+...             Default to 1 / sqrt(headdim).
+...         causal: bool. Whether to apply causal attention mask (e.g., for auto-regressive modeling).
+...         window_size: (left, right). If not (-1, -1), implements sliding window local attention.
+...         alibi_slopes: (nheads,) or (batch_size, nheads), fp32. A bias of
+...             (-alibi_slope * |i + seqlen_k - seqlen_q - j|)
+...             is added to the attention score of query i and key j.
+...         deterministic: bool. Whether to use the deterministic implementation of the backward pass,
+...             which is slightly slower and uses more memory. The forward pass is always deterministic.
+...         return_attn_probs: bool. Whether to return the attention probabilities. This option is for
+...            testing only. The returned probabilities are not guaranteed to be correct
+...            (they might not have the right scaling).
+...     Return:
+...         out: (batch_size, seqlen, nheads, headdim).
+...         softmax_lse [optional, if return_attn_probs=True]: (batch_size, nheads, seqlen). The
+...             logsumexp of each row of the matrix QK^T * scaling (e.g., log of the softmax
+...             normalization factor).
+...         S_dmask [optional, if return_attn_probs=True]: (batch_size, nheads, seqlen, seqlen).
+...             The output of softmax (possibly with different scaling). It also encodes the dropout
+...             pattern (negative means that location was dropped, nonnegative means it was kept).
+...     """
+M...     return FlashAttnFunc.apply(
+...         q,
+...         k,
+...         v,
+...         dropout_p,
+...         softmax_scale,
+ ...         causal,
+...         window_size,
+...         softcap,
+...         alibi_slopes,
+...         deterministic,
+...         return_attn_probs,
+...         torch.is_grad_enabled(),
+...     )
+... 
+>>> 
+>>> def flash_attn_varlen_qkvpacked_func(
+...     qkv,
+=...     cu_seqlens,
+...     max_seqlen,
+...     dropout_p=0.0,
+...     softmax_scale=None,
+...     causal=False,
+...     window_size=(-1, -1),  # -1 means infinite context window
+...     softcap=0.0, # 0.0 means deactivated
+1...     alibi_slopes=None,
+
+...     deterministic=False,
+...     return_attn_probs=False,
+... ):
+...     """dropout_p should be set to 0.0 during evaluation
+...     If Q, K, V are already stacked into 1 tensor, this function will be faster than
+...     calling flash_attn_varlen_func on Q, K, V since the backward pass avoids explicit concatenation
+...     of the gradients of Q, K, V.
+...     For multi-query and grouped-query attention (MQA/GQA), please see
+...     flash_attn_varlen_kvpacked_func and flash_attn_varlen_func.
+... 
+...     If window_size != (-1, -1), implements sliding window local attention. Query at position i
+...     will only attend to keys between [i - window_size[0], i + window_size[1]] inclusive.
+... 
+...     Arguments:
+...         qkv: (total, 3, nheads, headdim), where total = total number of tokens in the batch.
+...         cu_seqlens: (batch_size + 1,), dtype torch.int32. The cumulative sequence lengths
+...            of the sequences in the batch, used to index into qkv.
+...         max_seqlen: int. Maximum sequence length in the batch.
+...         dropout_p: float. Dropout probability.
+...         softmax_scale: float. The scaling of QK^T before applying softmax.
+...             Default to 1 / sqrt(headdim).
+...         causal: bool. Whether to apply causal attention mask (e.g., for auto-regressive modeling).
+...         window_size: (left, right). If not (-1, -1), implements sliding window local attention.
+...         softcap: float. Anything > 0 activates softcapping attention.
+...         alibi_slopes: (nheads,) or (batch_size, nheads), fp32. A bias of (-alibi_slope * |i - j|)
+...             is added to the attention score of query i and key j.
+...         deterministic: bool. Whether to use the deterministic implementation of the backward pass,
+...             which is slightly slower and uses more memory. The forward pass is always deterministic.
+nis...         return_attn_probs: bool. Whether to return the attention probabilities. This option is for
+...            testing only. The returned probabilities are not guaranteed to be correct
+...            (they might not have the right scaling).
+...     Return:
+...         out: (total, nheads, headdim).
+...         softmax_lse [optional, if return_attn_probs=True]: (nheads, total_q_seqlen). The
+...             logsumexp of each row of the matrix QK^T * scaling (e.g., log of the softmax
+...             normalization factor).
+...         S_dmask [optional, if return_attn_probs=True]: (batch_size, nheads, seqlen, seqlen).
+...             The output of softmax (possibly with different scaling). It also encodes the dropout
+...             pattern (negative means that location was dropped, nonnegative means it was kept).
+...     """
+t...     return FlashAttnVarlenQKVPackedFunc.apply(
+...         qkv,
+...         cu_seqlens,
+...         max_seqlen,
+...         dropout_p,
+...         softmax_scale,
+...         causal,
+...         window_size,
+...         softcap,
+...         alibi_slopes,
+...         deterministic,
+ ...         return_attn_probs,
+s...         torch.is_grad_enabled(),
+ ...     )
+... 
+>>> 
+>>> def flash_attn_varlen_kvpacked_func(
+...     q,
+s...     kv,
+...     cu_seqlens_q,
+...     cu_seqlens_k,
+...     max_seqlen_q,
+...     max_seqlen_k,
+...     dropout_p=0.0,
+u...     softmax_scale=None,
+t...     causal=False,
+...     window_size=(-1, -1),  # -1 means infinite context window
+...     softcap=0.0, # 0.0 means deactivated
+...     alibi_slopes=None,
+...     deterministic=False,
+...     return_attn_probs=False,
+... ):
+...     """dropout_p should be set to 0.0 during evaluation
+...     If K, V are already stacked into 1 tensor, this function will be faster than
+...     calling flash_attn_func on Q, K, V since the backward pass avoids explicit concatenation
+...     of the gradients of K, V.
+...     Supports multi-query and grouped-query attention (MQA/GQA) by passing in KV with fewer heads
+...     than Q. Note that the number of heads in Q must be divisible by the number of heads in KV.
+...     For example, if Q has 6 heads and K, V have 2 heads, head 0, 1, 2 of Q will attention to head
+...     0 of K, V, and head 3, 4, 5 of Q will attention to head 1 of K, V.
+... 
+...     If causal=True, the causal mask is aligned to the bottom right corner of the attention matrix.
+...     For example, if seqlen_q = 2 and seqlen_k = 5, the causal mask (1 = keep, 0 = masked out) is:
+...         1 1 1 1 0
+...         1 1 1 1 1
+...     If seqlen_q = 5 and seqlen_k = 2, the causal mask is:
+...         0 0
+...         0 0
+...         0 0
+...         1 0
+...         1 1
+...     If the row of the mask is all zero, the output will be zero.
+... 
+...     If window_size != (-1, -1), implements sliding window local attention. Query at position i
+...     will only attend to keys between
+...     [i + seqlen_k - seqlen_q - window_size[0], i + seqlen_k - seqlen_q + window_size[1]] inclusive.
+... 
+...     Arguments:
+...         q: (total_q, nheads, headdim), where total_q = total number of query tokens in the batch.
+...         kv: (total_k, 2, nheads_k, headdim), where total_k = total number of key tokens in the batch.
+...         cu_seqlens_q: (batch_size + 1,), dtype torch.int32. The cumulative sequence lengths
+...            of the sequences in the batch, used to index into q.
+...         cu_seqlens_k: (batch_size + 1,), dtype torch.int32. The cumulative sequence lengths
+...            of the sequences in the batch, used to index into kv.
+...         max_seqlen_q: int. Maximum query sequence length in the batch.
+...         max_seqlen_k: int. Maximum key sequence length in the batch.
+...         dropout_p: float. Dropout probability.
+...         softmax_scale: float. The scaling of QK^T before applying softmax.
+...             Default to 1 / sqrt(headdim).
+...         causal: bool. Whether to apply causal attention mask (e.g., for auto-regressive modeling).
+...         window_size: (left, right). If not (-1, -1), implements sliding window local attention.
+...         softcap: float. Anything > 0 activates softcapping attention.
+...         alibi_slopes: (nheads,) or (batch_size, nheads), fp32. A bias of
+...             (-alibi_slope * |i + seqlen_k - seqlen_q - j|)
+...             is added to the attention score of query i and key j.
+...         deterministic: bool. Whether to use the deterministic implementation of the backward pass,
+...             which is slightly slower and uses more memory. The forward pass is always deterministic.
+...         return_attn_probs: bool. Whether to return the attention probabilities. This option is for
+...            testing only. The returned probabilities are not guaranteed to be correct
+...            (they might not have the right scaling).
+...     Return:
+p...         out: (total, nheads, headdim).
+...         softmax_lse [optional, if return_attn_probs=True]: (nheads, total_q_seqlen). The
+...             logsumexp of each row of the matrix QK^T * scaling (e.g., log of the softmax
+...             normalization factor).
+...         S_dmask [optional, if return_attn_probs=True]: (batch_size, nheads, seqlen, seqlen).
+...             The output of softmax (possibly with different scaling). It also encodes the dropout
+...             pattern (negative means that location was dropped, nonnegative means it was kept).
+...     """
+d...     return FlashAttnVarlenKVPackedFunc.apply(
+...         q,
+...         kv,
+...         cu_seqlens_q,
+...         cu_seqlens_k,
+...         max_seqlen_q,
+...         max_seqlen_k,
+...         dropout_p,
+...         softmax_scale,
+...         causal,
+...         window_size,
+...         softcap,
+ ...         alibi_slopes,
+ ...         deterministic,
+...         return_attn_probs,
+...         torch.is_grad_enabled(),
+...     )
+,... 
+>>> 
+>>> def flash_attn_varlen_func(
+...     q,
+m...     k,
+...     v,
+...     cu_seqlens_q,
+...     cu_seqlens_k,
+...     max_seqlen_q,
+...     max_seqlen_k,
+...     dropout_p=0.0,
+...     softmax_scale=None,
+...     causal=False,
+...     window_size=(-1, -1),  # -1 means infinite context window
+...     softcap=0.0, # 0.0 means deactivated
+...     alibi_slopes=None,
+...     deterministic=False,
+...     return_attn_probs=False,
+...     block_table=None,
+... ):
+...     """dropout_p should be set to 0.0 during evaluation
+...     Supports multi-query and grouped-query attention (MQA/GQA) by passing in K, V with fewer heads
+...     than Q. Note that the number of heads in Q must be divisible by the number of heads in KV.
+...     For example, if Q has 6 heads and K, V have 2 heads, head 0, 1, 2 of Q will attention to head
+...     0 of K, V, and head 3, 4, 5 of Q will attention to head 1 of K, V.
+... 
+...     If causal=True, the causal mask is aligned to the bottom right corner of the attention matrix.
+...     For example, if seqlen_q = 2 and seqlen_k = 5, the causal mask (1 = keep, 0 = masked out) is:
+...         1 1 1 1 0
+...         1 1 1 1 1
+t...     If seqlen_q = 5 and seqlen_k = 2, the causal mask is:
+...         0 0
+...         0 0
+...         0 0
+...         1 0
+...         1 1
+ ...     If the row of the mask is all zero, the output will be zero.
+... 
+...     If window_size != (-1, -1), implements sliding window local attention. Query at position i
+...     will only attend to keys between
+...     [i + seqlen_k - seqlen_q - window_size[0], i + seqlen_k - seqlen_q + window_size[1]] inclusive.
+... 
+...     Arguments:
+...         q: (total_q, nheads, headdim), where total_q = total number of query tokens in the batch.
+...         k: (total_k, nheads_k, headdim), where total_k = total number of key tokens in the batch.
+...         v: (total_k, nheads_k, headdim), where total_k = total number of key tokens in the batch.
+...         cu_seqlens_q: (batch_size + 1,), dtype torch.int32. The cumulative sequence lengths
+...            of the sequences in the batch, used to index into q.
+...         cu_seqlens_k: (batch_size + 1,), dtype torch.int32. The cumulative sequence lengths
+...            of the sequences in the batch, used to index into kv.
+...         max_seqlen_q: int. Maximum query sequence length in the batch.
+...         max_seqlen_k: int. Maximum key sequence length in the batch.
+...         dropout_p: float. Dropout probability.
+...         softmax_scale: float. The scaling of QK^T before applying softmax.
+...             Default to 1 / sqrt(headdim).
+...         causal: bool. Whether to apply causal attention mask (e.g., for auto-regressive modeling).
+...         window_size: (left, right). If not (-1, -1), implements sliding window local attention.
+...         softcap: float. Anything > 0 activates softcapping attention.
+...         alibi_slopes: (nheads,) or (batch_size, nheads), fp32. A bias of
+...             (-alibi_slope * |i + seqlen_k - seqlen_q - j|)
+...             is added to the attention score of query i and key j.
+...         deterministic: bool. Whether to use the deterministic implementation of the backward pass,
+...             which is slightly slower and uses more memory. The forward pass is always deterministic.
+...         return_attn_probs: bool. Whether to return the attention probabilities. This option is for
+...            testing only. The returned probabilities are not guaranteed to be correct
+...            (they might not have the right scaling).
+...     Return:
+...         out: (total, nheads, headdim).
+...         softmax_lse [optional, if return_attn_probs=True]: (nheads, total_q_seqlen). The
+...             logsumexp of each row of the matrix QK^T * scaling (e.g., log of the softmax
+...             normalization factor).
+...         S_dmask [optional, if return_attn_probs=True]: (batch_size, nheads, seqlen, seqlen).
+...             The output of softmax (possibly with different scaling). It also encodes the dropout
+...             pattern (negative means that location was dropped, nonnegative means it was kept).
+...     """
+d...     return FlashAttnVarlenFunc.apply(
+...         q,
+...         k,
+...         v,
+...         cu_seqlens_q,
+...         cu_seqlens_k,
+...         max_seqlen_q,
+...         max_seqlen_k,
+...         dropout_p,
+...         softmax_scale,
+...         causal,
+...         window_size,
+...         softcap,
+...         alibi_slopes,
+...         deterministic,
+...         return_attn_probs,
+...         block_table,
+...         torch.is_grad_enabled(),
+...     )
+e... 
+>>> 
+>>> def flash_attn_with_kvcache(
+...     q,
+...     k_cache,
+...     v_cache,
+...     k=None,
+...     v=None,
+...     rotary_cos=None,
+...     rotary_sin=None,
+...     cache_seqlens: Optional[Union[(int, torch.Tensor)]] = None,
+...     cache_batch_idx: Optional[torch.Tensor] = None,
+...     cache_leftpad: Optional[torch.Tensor] = None,
+...     block_table: Optional[torch.Tensor] = None,
+...     softmax_scale=None,
+...     causal=False,
+l...     window_size=(-1, -1),  # -1 means infinite context window
+...     softcap=0.0, # 0.0 means deactivated
+...     rotary_interleaved=True,
+ ...     alibi_slopes=None,
+...     num_splits=0,
+...     return_softmax_lse=False,
+... ):
+...     """
+...     If k and v are not None, k_cache and v_cache will be updated *inplace* with the new values from
+...     k and v. This is useful for incremental decoding: you can pass in the cached keys/values from
+...     the previous step, and update them with the new keys/values from the current step, and do
+...     attention with the updated cache, all in 1 kernel.
+... 
+...     If you pass in k / v, you must make sure that the cache is large enough to hold the new values.
+...     For example, the KV cache could be pre-allocated with the max sequence length, and you can use
+...     cache_seqlens to keep track of the current sequence lengths of each sequence in the batch.
+... 
+...     Also apply rotary embedding if rotary_cos and rotary_sin are passed in. The key @k will be
+...     rotated by rotary_cos and rotary_sin at indices cache_seqlens, cache_seqlens + 1, etc.
+...     If causal or local (i.e., window_size != (-1, -1)), the query @q will be rotated by rotary_cos
+...     and rotary_sin at indices cache_seqlens, cache_seqlens + 1, etc.
+...     If not causal and not local, the query @q will be rotated by rotary_cos and rotary_sin at
+...     indices cache_seqlens only (i.e. we consider all tokens in @q to be at position cache_seqlens).
+... 
+...     See tests/test_flash_attn.py::test_flash_attn_kvcache for examples of how to use this function.
+... 
+...     Supports multi-query and grouped-query attention (MQA/GQA) by passing in KV with fewer heads
+...     than Q. Note that the number of heads in Q must be divisible by the number of heads in KV.
+...     For example, if Q has 6 heads and K, V have 2 heads, head 0, 1, 2 of Q will attention to head
+...     0 of K, V, and head 3, 4, 5 of Q will attention to head 1 of K, V.
+... 
+...     If causal=True, the causal mask is aligned to the bottom right corner of the attention matrix.
+...     For example, if seqlen_q = 2 and seqlen_k = 5, the causal mask (1 = keep, 0 = masked out) is:
+...         1 1 1 1 0
+...         1 1 1 1 1
+...     If seqlen_q = 5 and seqlen_k = 2, the causal mask is:
+...         0 0
+...         0 0
+...         0 0
+...         1 0
+...         1 1
+...     If the row of the mask is all zero, the output will be zero.
+... 
+...     If window_size != (-1, -1), implements sliding window local attention. Query at position i
+...     will only attend to keys between
+...     [i + seqlen_k - seqlen_q - window_size[0], i + seqlen_k - seqlen_q + window_size[1]] inclusive.
+... 
+...     Note: Does not support backward pass.
+... 
+...     Arguments:
+...         q: (batch_size, seqlen, nheads, headdim)
+...         k_cache: (batch_size_cache, seqlen_cache, nheads_k, headdim) if there's no block_table,
+...             or (num_blocks, page_block_size, nheads_k, headdim) if there's a block_table (i.e. paged KV cache)
+...             page_block_size must be a multiple of 256.
+...         v_cache: (batch_size_cache, seqlen_cache, nheads_k, headdim) if there's no block_table,
+...             or (num_blocks, page_block_size, nheads_k, headdim) if there's a block_table (i.e. paged KV cache)
+...         k [optional]: (batch_size, seqlen_new, nheads_k, headdim). If not None, we concatenate
+...             k with k_cache, starting at the indices specified by cache_seqlens.
+...         v [optional]: (batch_size, seqlen_new, nheads_k, headdim). Similar to k.
+...         rotary_cos [optional]: (seqlen_ro, rotary_dim / 2). If not None, we apply rotary embedding
+...             to k and q. Only applicable if k and v are passed in. rotary_dim must be divisible by 16.
+...         rotary_sin [optional]: (seqlen_ro, rotary_dim / 2). Similar to rotary_cos.
+...         cache_seqlens: int, or (batch_size,), dtype torch.int32. The sequence lengths of the
+...             KV cache.
+...         cache_batch_idx: (batch_size,), dtype torch.int32. The indices used to index into the KV cache.
+...             If None, we assume that the batch indices are [0, 1, 2, ..., batch_size - 1].
+...             If the indices are not distinct, and k and v are provided, the values updated in the cache
+...                  might come from any of the duplicate indices.
+...         cache_leftpad: (batch_size,), dtype torch.int32. The index that the KV cache starts. If None, assume 0.
+...         block_table [optional]: (batch_size, max_num_blocks_per_seq), dtype torch.int32.
+...         softmax_scale: float. The scaling of QK^T before applying softmax.
+...             Default to 1 / sqrt(headdim).
+...         causal: bool. Whether to apply causal attention mask (e.g., for auto-regressive modeling).
+...         window_size: (left, right). If not (-1, -1), implements sliding window local attention.
+...         softcap: float. Anything > 0 activates softcapping attention.
+...         rotary_interleaved: bool. Only applicable if rotary_cos and rotary_sin are passed in.
+...             If True, rotary embedding will combine dimensions 0 & 1, 2 & 3, etc. If False,
+...             rotary embedding will combine dimensions 0 & rotary_dim / 2, 1 & rotary_dim / 2 + 1
+...             (i.e. GPT-NeoX style).
+...         alibi_slopes: (nheads,) or (batch_size, nheads), fp32. A bias of
+...             (-alibi_slope * |i + seqlen_k - seqlen_q - j|)
+...             is added to the attention score of query i and key j.
+...         num_splits: int. If > 1, split the key/value into this many chunks along the sequence.
+...            If num_splits == 1, we don't split the key/value. If num_splits == 0, we use a heuristic
+...            to automatically determine the number of splits.
+...            Don't change this unless you know what you are doing.
+...         return_softmax_lse: bool. Whether to return the logsumexp of the attention scores.
+... 
+...     Return:
+...         out: (batch_size, seqlen, nheads, headdim).
+...         softmax_lse [optional, if return_softmax_lse=True]: (batch_size, nheads, seqlen). The
+...             logsumexp of each row of the matrix QK^T * scaling (e.g., log of the softmax
+...             normalization factor).
+...     """
+...     assert k_cache.stride(-1) == 1, "k_cache must have contiguous last dimension"
+...     assert v_cache.stride(-1) == 1, "v_cache must have contiguous last dimension"
+...     q, k, v = [maybe_contiguous(x) for x in (q, k, v)]
+...     if softmax_scale is None:
+...         softmax_scale = q.shape[-1] ** (-0.5)
+...     if cache_seqlens is not None and isinstance(cache_seqlens, int):
+...         cache_seqlens = torch.full(
+...             (q.shape[0],), cache_seqlens, dtype=torch.int32, device=k_cache.device
+...         )
+...         cache_seqlens = maybe_contiguous(cache_seqlens)
+...     cache_batch_idx = maybe_contiguous(cache_batch_idx)
+...     block_table = maybe_contiguous(block_table)
+...     out, softmax_lse = flash_attn_gpu.fwd_kvcache(
+...         q,
+...         k_cache,
+...         v_cache,
+...         k,
+...         v,
+...         cache_seqlens,
+...         rotary_cos,
+...         rotary_sin,
+...         cache_batch_idx,
+...         cache_leftpad,
+...         block_table,
+...         alibi_slopes,
+...         None,
+...         softmax_scale,
+...         causal,
+...         window_size[0],
+...         window_size[1],
+...         softcap,
+...         rotary_interleaved,
+...         num_splits,
+...     )
+...     return (out, softmax_lse) if return_softmax_lse else out
+... 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> import flash_attn_2_cuda as flash_attn_gpu
+>>> from .flash_attn_triton_amd import interface_fa as flash_attn_gpu
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+ImportError: attempted relative import with no known parent package
+>>> import flash_attn_cuda
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+ModuleNotFoundError: No module named 'flash_attn_cuda'
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> import flash_attn  # أو واجهة المكتبة المناسبة  
+>>> print(torch.backends.cuda.flash_sdp_enabled())
+True
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> import torch
+>>> import torch.nn.functional as F
+>>> 
+>>> def simple_flash_attention_example(batch_size=2, seq_len=16, embed_dim=64, num_heads=4):
+...     # تأكد أن الجهاز هو GPU إن أمكن
+...     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+...     print("Using device:", device)
+... 
+>>>     # إعداد بيانات عشوائية
+>>>     # نفترض أن embed_dim = num_heads * head_dim
+>>>     head_dim = embed_dim // num_heads
+  File "<stdin>", line 1
+    head_dim = embed_dim // num_heads
+IndentationError: unexpected indent
+>>> 
+>>>     # تنشئ Q, K, V بالشكل [batch_size, seq_len, embed_dim]
+>>>     Q = torch.randn(batch_size, seq_len, embed_dim, device=device, dtype=torch.float16, requires_grad=True)
+  File "<stdin>", line 1
+    Q = torch.randn(batch_size, seq_len, embed_dim, device=device, dtype=torch.float16, requires_grad=True)
+IndentationError: unexpected indent
+>>>     K = torch.randn(batch_size, seq_len, embed_dim, device=device, dtype=torch.float16, requires_grad=True)
+  File "<stdin>", line 1
+    K = torch.randn(batch_size, seq_len, embed_dim, device=device, dtype=torch.float16, requires_grad=True)
+IndentationError: unexpected indent
+>>>     V = torch.randn(batch_size, seq_len, embed_dim, device=device, dtype=torch.float16, requires_grad=True)
+  File "<stdin>", line 1
+    V = torch.randn(batch_size, seq_len, embed_dim, device=device, dtype=torch.float16, requires_grad=True)
+IndentationError: unexpected indent
+>>> 
+>>>     # إعادة تشكيل (reshape) إلى [batch_size, num_heads, seq_len, head_dim]
+>>>     Q = Q.view(batch_size, seq_len, num_heads, head_dim).permute(0,2,1,3)
+  File "<stdin>", line 1
+    Q = Q.view(batch_size, seq_len, num_heads, head_dim).permute(0,2,1,3)
+IndentationError: unexpected indent
+>>>     K = K.view(batch_size, seq_len, num_heads, head_dim).permute(0,2,1,3)
+  File "<stdin>", line 1
+    K = K.view(batch_size, seq_len, num_heads, head_dim).permute(0,2,1,3)
+IndentationError: unexpected indent
+>>>     V = V.view(batch_size, seq_len, num_heads, head_dim).permute(0,2,1,3)
+  File "<stdin>", line 1
+    V = V.view(batch_size, seq_len, num_heads, head_dim).permute(0,2,1,3)
+IndentationError: unexpected indent
+>>> 
+>>>     # استخدام FlashAttention-2 عبر scaled_dot_product_attention
+>>>     # ملاحظة: في PyTorch 2.2+ تم الإعلان عن دعم FlashAttention-2 ضمن هذه الدالة. :contentReference[oaicite:3]{index=3}
+>>>     out = F.scaled_dot_product_attention(Q, K, V,
+  File "<stdin>", line 1
+    out = F.scaled_dot_product_attention(Q, K, V,
+IndentationError: unexpected indent
+>>>                                          attn_mask=None,
+  File "<stdin>", line 1
+    attn_mask=None,
+IndentationError: unexpected indent
+>>>                                          dropout_p=0.0,
+  File "<stdin>", line 1
+    dropout_p=0.0,
+IndentationError: unexpected indent
+>>>                                          is_causal=False)
+  File "<stdin>", line 1
+    is_causal=False)
+IndentationError: unexpected indent
+>>> 
+>>>     # شكل النتيجة: [batch_size, num_heads, seq_len, head_dim]
+>>>     print("Output shape:", out.shape)
+  File "<stdin>", line 1
+    print("Output shape:", out.shape)
+IndentationError: unexpected indent
+>>> 
+>>>     # لإرجاعه إلى شكل [batch_size, seq_len, embed_dim]
+>>>     out = out.permute(0,2,1,3).contiguous().view(batch_size, seq_len, embed_dim)
+  File "<stdin>", line 1
+    out = out.permute(0,2,1,3).contiguous().view(batch_size, seq_len, embed_dim)
+IndentationError: unexpected indent
+>>>     print("Final output shape:", out.shape)
+  File "<stdin>", line 1
+    print("Final output shape:", out.shape)
+IndentationError: unexpected indent
+>>> 
+>>>     # نفّذ backward للتأكد من أن التدرّج يعمل
+>>>     out_sum = out.sum()
+  File "<stdin>", line 1
+    out_sum = out.sum()
+IndentationError: unexpected indent
+>>>     out_sum.backward()
+  File "<stdin>", line 1
+    out_sum.backward()
+IndentationError: unexpected indent
+>>>     print("Gradient check: Q.grad is not None?", Q.grad is not None)
+  File "<stdin>", line 1
+    print("Gradient check: Q.grad is not None?", Q.grad is not None)
+IndentationError: unexpected indent
+>>> 
+>>> if __name__ == "__main__":
+...     simple_flash_attention_example()
+... 
+Using device: cuda
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> import torch
+>>> import torch.nn.functional as F
+>>> 
+>>> def simple_flash_attention_example(batch_size=2, seq_len=16, embed_dim=64, num_heads=4):
+...     # تأكد أن الجهاز هو GPU إن أمكن
+...     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+...     print("Using device:", device)
+... 
+>>>     # إعداد بيانات عشوائية
+>>>     head_dim = embed_dim // num_heads
+  File "<stdin>", line 1
+    head_dim = embed_dim // num_heads
+IndentationError: unexpected indent
+>>> 
+>>>     Q = torch.randn(batch_size, seq_len, embed_dim, device=device, dtype=torch.float16, requires_grad=True)
+  File "<stdin>", line 1
+    Q = torch.randn(batch_size, seq_len, embed_dim, device=device, dtype=torch.float16, requires_grad=True)
+IndentationError: unexpected indent
+>>>     K = torch.randn(batch_size, seq_len, embed_dim, device=device, dtype=torch.float16, requires_grad=True)
+  File "<stdin>", line 1
+    K = torch.randn(batch_size, seq_len, embed_dim, device=device, dtype=torch.float16, requires_grad=True)
+IndentationError: unexpected indent
+>>>     V = torch.randn(batch_size, seq_len, embed_dim, device=device, dtype=torch.float16, requires_grad=True)
+  File "<stdin>", line 1
+    V = torch.randn(batch_size, seq_len, embed_dim, device=device, dtype=torch.float16, requires_grad=True)
+IndentationError: unexpected indent
+>>> 
+>>>     # إعادة تشكيل (reshape) إلى [batch_size, num_heads, seq_len, head_dim]
+>>>     Q = Q.view(batch_size, seq_len, num_heads, head_dim).permute(0,2,1,3)
+  File "<stdin>", line 1
+    Q = Q.view(batch_size, seq_len, num_heads, head_dim).permute(0,2,1,3)
+IndentationError: unexpected indent
+>>>     K = K.view(batch_size, seq_len, num_heads, head_dim).permute(0,2,1,3)
+  File "<stdin>", line 1
+    K = K.view(batch_size, seq_len, num_heads, head_dim).permute(0,2,1,3)
+IndentationError: unexpected indent
+>>>     V = V.view(batch_size, seq_len, num_heads, head_dim).permute(0,2,1,3)
+  File "<stdin>", line 1
+    V = V.view(batch_size, seq_len, num_heads, head_dim).permute(0,2,1,3)
+IndentationError: unexpected indent
+>>> 
+>>>     # استخدام FlashAttention-2 عبر scaled_dot_product_attention
+>>>     out = F.scaled_dot_product_attention(Q, K, V,
+  File "<stdin>", line 1
+    out = F.scaled_dot_product_attention(Q, K, V,
+IndentationError: unexpected indent
+>>>                                          attn_mask=None,
+  File "<stdin>", line 1
+    attn_mask=None,
+IndentationError: unexpected indent
+>>>                                          dropout_p=0.0,
+  File "<stdin>", line 1
+    dropout_p=0.0,
+IndentationError: unexpected indent
+>>>                                          is_causal=False)
+  File "<stdin>", line 1
+    is_causal=False)
+IndentationError: unexpected indent
+>>> 
+>>>     print("Output shape:", out.shape)
+  File "<stdin>", line 1
+    print("Output shape:", out.shape)
+IndentationError: unexpected indent
+>>> 
+>>>     # لإرجاعه إلى شكل [batch_size, seq_len, embed_dim]
+>>>     out = out.permute(0,2,1,3).contiguous().view(batch_size, seq_len, embed_dim)
+  File "<stdin>", line 1
+    out = out.permute(0,2,1,3).contiguous().view(batch_size, seq_len, embed_dim)
+IndentationError: unexpected indent
+>>>     print("Final output shape:", out.shape)
+  File "<stdin>", line 1
+    print("Final output shape:", out.shape)
+IndentationError: unexpected indent
+>>> 
+>>>     # نفّذ backward للتأكد من أن التدرّج يعمل
+>>>     out_sum = out.sum()
+  File "<stdin>", line 1
+    out_sum = out.sum()
+IndentationError: unexpected indent
+>>>     out_sum.backward()
+  File "<stdin>", line 1
+    out_sum.backward()
+IndentationError: unexpected indent
+>>>     print("Gradient check: Q.grad is not None?", Q.grad is not None)
+  File "<stdin>", line 1
+    print("Gradient check: Q.grad is not None?", Q.grad is not None)
+IndentationError: unexpected indent
+>>> 
+>>> if __name__ == "__main__":
+...     simple_flash_attention_example()
+... 
+Using device: cuda
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> exit()
+(my-llm-env) m@m-HP-Z440-Workstation:~/Desktop/vvvc$ python 1.py
+/home/m/Desktop/vvvc/my-llm-env/lib/python3.10/site-packages/torch/cuda/__init__.py:63: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+Using device: cuda
+Output shape: torch.Size([2, 4, 16, 16])
+Final output shape: torch.Size([2, 16, 64])
+/home/m/Desktop/vvvc/1.py:36: UserWarning: The .grad attribute of a Tensor that is not a leaf Tensor is being accessed. Its .grad attribute won't be populated during autograd.backward(). If you indeed want the .grad field to be populated for a non-leaf Tensor, use .retain_grad() on the non-leaf Tensor. If you access the non-leaf Tensor by mistake, make sure you access the leaf Tensor instead. See github.com/pytorch/pytorch/pull/30531 for more informations. (Triggered internally at /pytorch/build/aten/src/ATen/core/TensorBody.h:489.)
+  print("Gradient check: Q.grad is not None?", Q.grad is not None)
+Gradient check: Q.grad is not None? False
+(my-llm-env) m@m-HP-Z440-Workstation:~/Desktop/vvvc$ python 1.py
+/home/m/Desktop/vvvc/my-llm-env/lib/python3.10/site-packages/torch/cuda/__init__.py:63: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+Using device: cuda
+PyTorch version: 2.8.0+cu128
+CUDA version used by PyTorch: 12.8
+flash_sdp_enabled (before): True
+mem_efficient_sdp_enabled (before): True
+math_sdp_enabled (before): True
+/home/m/.local/share/uv/python/cpython-3.10.19-linux-x86_64-gnu/lib/python3.10/contextlib.py:103: FutureWarning: `torch.backends.cuda.sdp_kernel()` is deprecated. In the future, this context manager will be removed. Please see `torch.nn.attention.sdpa_kernel()` for the new context manager, with updated signature.
+  self.gen = func(*args, **kwds)
+Inside context — flash_sdp_enabled: True
+Output shape (before reshape): torch.Size([2, 4, 16, 16])
+Final output shape: torch.Size([2, 16, 64])
+/home/m/Desktop/vvvc/1.py:46: UserWarning: The .grad attribute of a Tensor that is not a leaf Tensor is being accessed. Its .grad attribute won't be populated during autograd.backward(). If you indeed want the .grad field to be populated for a non-leaf Tensor, use .retain_grad() on the non-leaf Tensor. If you access the non-leaf Tensor by mistake, make sure you access the leaf Tensor instead. See github.com/pytorch/pytorch/pull/30531 for more informations. (Triggered internally at /pytorch/build/aten/src/ATen/core/TensorBody.h:489.)
+  print("Gradient check: Q.grad is not None?", Q.grad is not None)
+Gradient check: Q.grad is not None? False
+(my-llm-env) m@m-HP-Z440-Workstation:~/Desktop/vvvc$ python 2.py
+/home/m/Desktop/vvvc/my-llm-env/lib/python3.10/site-packages/torch/cuda/__init__.py:63: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+`torch_dtype` is deprecated! Use `dtype` instead!
+Traceback (most recent call last):
+  File "/home/m/Desktop/vvvc/2.py", line 46, in <module>
+    tokenizer, model = load_model(model_path, device)
+  File "/home/m/Desktop/vvvc/2.py", line 6, in load_model
+    model = AutoModelForCausalLM.from_pretrained(
+  File "/home/m/Desktop/vvvc/my-llm-env/lib/python3.10/site-packages/transformers/models/auto/auto_factory.py", line 604, in from_pretrained
+    return model_class.from_pretrained(
+  File "/home/m/Desktop/vvvc/my-llm-env/lib/python3.10/site-packages/transformers/modeling_utils.py", line 288, in _wrapper
+    return func(*args, **kwargs)
+  File "/home/m/Desktop/vvvc/my-llm-env/lib/python3.10/site-packages/transformers/modeling_utils.py", line 4933, in from_pretrained
+    raise ValueError(
+ValueError: Using a `device_map`, `tp_plan`, `torch.device` context manager or setting `torch.set_default_device(device)` requires `accelerate`. You can install it with `pip install accelerate`
+(my-llm-env) m@m-HP-Z440-Workstation:~/Desktop/vvvc$ python
+Python 3.10.19 (main, Oct 10 2025, 12:46:15) [Clang 20.1.4 ] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> from transformers import AutoModelForCausalLM
+/home/m/Desktop/vvvc/my-llm-env/lib/python3.10/site-packages/torch/cuda/__init__.py:63: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+>>> import torch
+>>> model = AutoModelForCausalLM.from_pretrained("facebook/opt-125m", device_map="auto", dtype=torch.bfloat16, attn_implementation="flash_attention_2")
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/home/m/Desktop/vvvc/my-llm-env/lib/python3.10/site-packages/transformers/models/auto/auto_factory.py", line 604, in from_pretrained
+    return model_class.from_pretrained(
+  File "/home/m/Desktop/vvvc/my-llm-env/lib/python3.10/site-packages/transformers/modeling_utils.py", line 288, in _wrapper
+    return func(*args, **kwargs)
+  File "/home/m/Desktop/vvvc/my-llm-env/lib/python3.10/site-packages/transformers/modeling_utils.py", line 4933, in from_pretrained
+    raise ValueError(
+ValueError: Using a `device_map`, `tp_plan`, `torch.device` context manager or setting `torch.set_default_device(device)` requires `accelerate`. You can install it with `pip install accelerate`
+>>> 
+KeyboardInterrupt
+>>> exit()
+(my-llm-env) m@m-HP-Z440-Workstation:~/Desktop/vvvc$ uv from transformers import AutoModelForCausalLM
+import torch
+model = AutoModelForCausalLM.from_pretrained("facebook/opt-125m", device_map="auto", dtype=torch.bfloat16, attn_implementation="flash_attention_2")
+error: unrecognized subcommand 'from'
+
+  tip: a similar subcommand exists: 'format'
+
+Usage: uv [OPTIONS] <COMMAND>
+
+For more information, try '--help'.
+Command 'import' not found, but can be installed with:
+sudo apt install graphicsmagick-imagemagick-compat  # version 1.4+really1.3.42-1, or
+sudo apt install imagemagick-6.q16                  # version 8:6.9.11.60+dfsg-1.6ubuntu1
+sudo apt install imagemagick-6.q16hdri              # version 8:6.9.11.60+dfsg-1.6ubuntu1
+bash: syntax error near unexpected token `('
+(my-llm-env) m@m-HP-Z440-Workstation:~/Desktop/vvvc$ uv pip install accelerate
+Using Python 3.10.19 environment at: my-llm-env
+Resolved 39 packages in 355ms
+Prepared 1 package in 335ms
+Installed 1 package in 13ms
+ + accelerate==1.11.0
+(my-llm-env) m@m-HP-Z440-Workstation:~/Desktop/vvvc$ uv pip installtransformers 
+error: unrecognized subcommand 'installtransformers'
+
+  tip: a similar subcommand exists: 'install'
+
+Usage: uv pip [OPTIONS] <COMMAND>
+
+For more information, try '--help'.
+(my-llm-env) m@m-HP-Z440-Workstation:~/Desktop/vvvc$ uv pip install transformers
+Using Python 3.10.19 environment at: my-llm-env
+Audited 1 package in 9ms
+(my-llm-env) m@m-HP-Z440-Workstation:~/Desktop/vvvc$ python
+Python 3.10.19 (main, Oct 10 2025, 12:46:15) [Clang 20.1.4 ] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> from transformers import AutoModelForCausalLM
+/home/m/Desktop/vvvc/my-llm-env/lib/python3.10/site-packages/torch/cuda/__init__.py:63: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+>>> import torch
+>>> model = AutoModelForCausalLM.from_pretrained("facebook/opt-125m", device_map="auto", dtype=torch.bfloat16, attn_implementation="flash_attention_2")
+model.safetensors:   0%|                                                                      | 0.00/251M [00:00<?, ?B/s]model.safetensors: 100%|██████████████████████████████████████████████████████████████| 251M/251M [01:12<00:00, 3.46MB/s]
+
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> from transformers import AutoModelForCausalLM
+>>> import torch
+>>> 
+>>> model = AutoModelForCausalLM.from_pretrained(
+...     "facebook/opt-125m",
+...     torch_dtype=torch.bfloat16,
+...     device_map="auto",
+...     use_flash_attention_2=True
+... )
+`torch_dtype` is deprecated! Use `dtype` instead!
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/home/m/Desktop/vvvc/my-llm-env/lib/python3.10/site-packages/transformers/models/auto/auto_factory.py", line 604, in from_pretrained
+    return model_class.from_pretrained(
+  File "/home/m/Desktop/vvvc/my-llm-env/lib/python3.10/site-packages/transformers/modeling_utils.py", line 288, in _wrapper
+    return func(*args, **kwargs)
+  File "/home/m/Desktop/vvvc/my-llm-env/lib/python3.10/site-packages/transformers/modeling_utils.py", line 5103, in from_pretrained
+    model = cls(config, *model_args, **model_kwargs)
+TypeError: OPTForCausalLM.__init__() got an unexpected keyword argument 'use_flash_attention_2'
+>>> 
+KeyboardInterrupt
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> from transformers import AutoModelForCausalLM, AutoTokenizer
+>>> import torch
+>>> 
+>>> # تحميل النموذج والمُرمّز (tokenizer)
+>>> model = AutoModelForCausalLM.from_pretrained(
+...     "facebook/opt-125m",
+...     dtype=torch.bfloat16,
+...     device_map="auto",
+...     use_flash_attention_2=True
+... )
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/home/m/Desktop/vvvc/my-llm-env/lib/python3.10/site-packages/transformers/models/auto/auto_factory.py", line 604, in from_pretrained
+    return model_class.from_pretrained(
+  File "/home/m/Desktop/vvvc/my-llm-env/lib/python3.10/site-packages/transformers/modeling_utils.py", line 288, in _wrapper
+    return func(*args, **kwargs)
+  File "/home/m/Desktop/vvvc/my-llm-env/lib/python3.10/site-packages/transformers/modeling_utils.py", line 5103, in from_pretrained
+    model = cls(config, *model_args, **model_kwargs)
+TypeError: OPTForCausalLM.__init__() got an unexpected keyword argument 'use_flash_attention_2'
+>>> tokenizer = AutoTokenizer.from_pretrained("facebook/opt-125m")
+>>> 
+>>> # تأكد أن النموذج في وضع التقييم
+>>> model.eval()
+OPTForCausalLM(
+  (model): OPTModel(
+    (decoder): OPTDecoder(
+      (embed_tokens): Embedding(50272, 768, padding_idx=1)
+      (embed_positions): OPTLearnedPositionalEmbedding(2050, 768)
+      (final_layer_norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+      (layers): ModuleList(
+        (0-11): 12 x OPTDecoderLayer(
+          (self_attn): OPTAttention(
+            (k_proj): Linear(in_features=768, out_features=768, bias=True)
+            (v_proj): Linear(in_features=768, out_features=768, bias=True)
+            (q_proj): Linear(in_features=768, out_features=768, bias=True)
+            (out_proj): Linear(in_features=768, out_features=768, bias=True)
+          )
+          (activation_fn): ReLU()
+          (self_attn_layer_norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (fc1): Linear(in_features=768, out_features=3072, bias=True)
+          (fc2): Linear(in_features=3072, out_features=768, bias=True)
+          (final_layer_norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+        )
+      )
+    )
+  )
+  (lm_head): Linear(in_features=768, out_features=50272, bias=False)
+)
+>>> 
+>>> def generate_text(prompt: str, max_new_tokens: int = 50, temperature: float = 1.0):
+...     device = next(model.parameters()).device
+...     # ترميز المدخل
+...     inputs = tokenizer(prompt, return_tensors="pt").to(device)
+...     input_ids = inputs["input_ids"]
+...     attention_mask = inputs.get("attention_mask", None)
+... 
+>>>     # توليد النص
+>>>     output_ids = model.generate(
+  File "<stdin>", line 1
+    output_ids = model.generate(
+IndentationError: unexpected indent
+>>>         input_ids,
+  File "<stdin>", line 1
+    input_ids,
+IndentationError: unexpected indent
+>>>         attention_mask=attention_mask,
+  File "<stdin>", line 1
+    attention_mask=attention_mask,
+IndentationError: unexpected indent
+>>>         max_new_tokens=max_new_tokens,
+  File "<stdin>", line 1
+    max_new_tokens=max_new_tokens,
+IndentationError: unexpected indent
+>>>         temperature=temperature,
+  File "<stdin>", line 1
+    temperature=temperature,
+IndentationError: unexpected indent
+>>>         do_sample=True
+  File "<stdin>", line 1
+    do_sample=True
+IndentationError: unexpected indent
+>>>     )
+  File "<stdin>", line 1
+    )
+IndentationError: unexpected indent
+>>> 
+>>>     # فك التشفير
+>>>     output_text = tokenizer.decode(output_ids[0], skip_special_tokens=True)
+  File "<stdin>", line 1
+    output_text = tokenizer.decode(output_ids[0], skip_special_tokens=True)
+IndentationError: unexpected indent
+>>>     return output_text
+  File "<stdin>", line 1
+    return output_text
+IndentationError: unexpected indent
+>>> 
+>>> if __name__ == "__main__":
+...     prompt = "Once upon a time"
+...     generated = generate_text(prompt, max_new_tokens=100, temperature=0.7)
+...     print("Prompt:", prompt)
+...     print("Generated:", generated)
+... 
+Prompt: Once upon a time
+Generated: None
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> from transformers import AutoModelForCausalLM, AutoTokenizer
+>>> import torch
+>>> model = AutoModelForCausalLM.from_pretrained(
+...     "facebook/opt-125m",
+...     dtype=torch.bfloat16,
+...     device_map="auto",
+...     attn_implementation="flash_attention_2"
+... )
+>>> tokenizer = AutoTokenizer.from_pretrained("facebook/opt-125m")
+>>> model.eval()
+OPTForCausalLM(
+  (model): OPTModel(
+    (decoder): OPTDecoder(
+      (embed_tokens): Embedding(50272, 768, padding_idx=1)
+      (embed_positions): OPTLearnedPositionalEmbedding(2050, 768)
+      (final_layer_norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+      (layers): ModuleList(
+        (0-11): 12 x OPTDecoderLayer(
+          (self_attn): OPTAttention(
+            (k_proj): Linear(in_features=768, out_features=768, bias=True)
+            (v_proj): Linear(in_features=768, out_features=768, bias=True)
+            (q_proj): Linear(in_features=768, out_features=768, bias=True)
+            (out_proj): Linear(in_features=768, out_features=768, bias=True)
+          )
+          (activation_fn): ReLU()
+          (self_attn_layer_norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (fc1): Linear(in_features=768, out_features=3072, bias=True)
+          (fc2): Linear(in_features=3072, out_features=768, bias=True)
+          (final_layer_norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+        )
+      )
+    )
+  )
+  (lm_head): Linear(in_features=768, out_features=50272, bias=False)
+)
+>>> 
+>>> def generate_text(prompt: str, max_new_tokens: int = 50, temperature: float = 1.0):
+...     device = next(model.parameters()).device
+...     # ترميز المدخل
+...     inputs = tokenizer(prompt, return_tensors="pt").to(device)
+...     input_ids = inputs["input_ids"]
+...     attention_mask = inputs.get("attention_mask", None)
+... 
+>>>     # توليد النص
+>>>     output_ids = model.generate(
+  File "<stdin>", line 1
+    output_ids = model.generate(
+IndentationError: unexpected indent
+>>>         input_ids,
+  File "<stdin>", line 1
+    input_ids,
+IndentationError: unexpected indent
+>>>         attention_mask=attention_mask,
+  File "<stdin>", line 1
+    attention_mask=attention_mask,
+IndentationError: unexpected indent
+>>>         max_new_tokens=max_new_tokens,
+  File "<stdin>", line 1
+    max_new_tokens=max_new_tokens,
+IndentationError: unexpected indent
+>>>         temperature=temperature,
+  File "<stdin>", line 1
+    temperature=temperature,
+IndentationError: unexpected indent
+>>>         do_sample=True
+  File "<stdin>", line 1
+    do_sample=True
+IndentationError: unexpected indent
+>>>     )
+  File "<stdin>", line 1
+    )
+IndentationError: unexpected indent
+>>> 
+>>>     # فك التشفير
+>>>     output_text = tokenizer.decode(output_ids[0], skip_special_tokens=True)
+  File "<stdin>", line 1
+    output_text = tokenizer.decode(output_ids[0], skip_special_tokens=True)
+IndentationError: unexpected indent
+>>>     return output_text
+  File "<stdin>", line 1
+    return output_text
+IndentationError: unexpected indent
+>>> 
+>>> if __name__ == "__main__":
+...     prompt = "Once upon a time"
+...     generated = generate_text(prompt, max_new_tokens=100, temperature=0.7)
+...     print("Prompt:", prompt)
+...     print("Generated:", generated)
+... 
+Prompt: Once upon a time
+Generated: None
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> from transformers import AutoModelForCausalLM, AutoTokenizer
+>>> import torch
+>>> 
+>>> def load_model_and_tokenizer(model_name="gpt2"):
+...     # تحميل النموذج والمُرمّز (tokenizer)
+...     model = AutoModelForCausalLM.from_pretrained(
+...         model_name,
+...         torch_dtype=torch.bfloat16,  # flash-attention-2 يدعم bfloat16 أو float16 فقط :contentReference[oaicite:0]{index=0}
+...         device_map="auto",
+...         attn_implementation="flash_attention_2"  # حاول تفعيل FlashAttention-2
+...     )
+...     tokenizer = AutoTokenizer.from_pretrained(model_name)
+...     model.eval()
+...     return model, tokenizer
+... 
+>>> def generate_text(model, tokenizer, prompt: str, max_new_tokens=50, temperature=1.0):
+...     device = next(model.parameters()).device
+...     inputs = tokenizer(prompt, return_tensors="pt").to(device)
+...     input_ids = inputs["input_ids"]
+...     attention_mask = inputs.get("attention_mask", None)
+... 
+>>>     output_ids = model.generate(
+  File "<stdin>", line 1
+    output_ids = model.generate(
+IndentationError: unexpected indent
+>>>         input_ids,
+  File "<stdin>", line 1
+    input_ids,
+IndentationError: unexpected indent
+>>>         attention_mask=attention_mask,
+  File "<stdin>", line 1
+    attention_mask=attention_mask,
+IndentationError: unexpected indent
+>>>         max_new_tokens=max_new_tokens,
+  File "<stdin>", line 1
+    max_new_tokens=max_new_tokens,
+IndentationError: unexpected indent
+>>>         temperature=temperature,
+  File "<stdin>", line 1
+    temperature=temperature,
+IndentationError: unexpected indent
+>>>         do_sample=True
+  File "<stdin>", line 1
+    do_sample=True
+IndentationError: unexpected indent
+>>>     )
+  File "<stdin>", line 1
+    )
+IndentationError: unexpected indent
+>>> 
+>>>     return tokenizer.decode(output_ids[0], skip_special_tokens=True)
+  File "<stdin>", line 1
+    return tokenizer.decode(output_ids[0], skip_special_tokens=True)
+IndentationError: unexpected indent
+>>> 
+>>> if __name__ == "__main__":
+...     # جرب مع نموذج صغير مثل gpt2 أو distilgpt2
+...     model, tokenizer = load_model_and_tokenizer("gpt2")
+...     prompt = "Hello, how are you today?"
+...     output = generate_text(model, tokenizer, prompt, max_new_tokens=30, temperature=0.7)
+...     print("Prompt:", prompt)
+...     print("Generated:", output)
+... 
+config.json: 100%|██████████████████████████████████████████████████████████████████████| 665/665 [00:00<00:00, 2.25MB/s]
+model.safetensors:   0%|                                                                      | 0.00/548M [00:00<?, ?B/s]^CCancellation requested; stopping current tasks.
+Traceback (most recent call last):
+  File "/home/m/Desktop/vvvc/my-llm-env/lib/python3.10/site-packages/huggingface_hub/file_download.py", line 629, in xet_get
+    download_files(
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "<stdin>", line 3, in <module>
+  File "<stdin>", line 3, in load_model_and_tokenizer
+  File "/home/m/Desktop/vvvc/my-llm-env/lib/python3.10/site-packages/transformers/models/auto/auto_factory.py", line 604, in from_pretrained
+    return model_class.from_pretrained(
+  File "/home/m/Desktop/vvvc/my-llm-env/lib/python3.10/site-packages/transformers/modeling_utils.py", line 288, in _wrapper
+    return func(*args, **kwargs)
+  File "/home/m/Desktop/vvvc/my-llm-env/lib/python3.10/site-packages/transformers/modeling_utils.py", line 5027, in from_pretrained
+    checkpoint_files, sharded_metadata = _get_resolved_checkpoint_files(
+  File "/home/m/Desktop/vvvc/my-llm-env/lib/python3.10/site-packages/transformers/modeling_utils.py", line 1150, in _get_resolved_checkpoint_files
+    resolved_archive_file = cached_file(pretrained_model_name_or_path, filename, **cached_file_kwargs)
+  File "/home/m/Desktop/vvvc/my-llm-env/lib/python3.10/site-packages/transformers/utils/hub.py", line 321, in cached_file
+    file = cached_files(path_or_repo_id=path_or_repo_id, filenames=[filename], **kwargs)
+  File "/home/m/Desktop/vvvc/my-llm-env/lib/python3.10/site-packages/transformers/utils/hub.py", line 478, in cached_files
+    hf_hub_download(
+  File "/home/m/Desktop/vvvc/my-llm-env/lib/python3.10/site-packages/huggingface_hub/utils/_validators.py", line 114, in _inner_fn
+    return fn(*args, **kwargs)
+  File "/home/m/Desktop/vvvc/my-llm-env/lib/python3.10/site-packages/huggingface_hub/file_download.py", line 1010, in hf_hub_download
+    return _hf_hub_download_to_cache_dir(
+  File "/home/m/Desktop/vvvc/my-llm-env/lib/python3.10/site-packages/huggingface_hub/file_download.py", line 1171, in _hf_hub_download_to_cache_dir
+    _download_to_tmp_and_move(
+  File "/home/m/Desktop/vvvc/my-llm-env/lib/python3.10/site-packages/huggingface_hub/file_download.py", line 1723, in _download_to_tmp_and_move
+    xet_get(
+  File "/home/m/Desktop/vvvc/my-llm-env/lib/python3.10/site-packages/huggingface_hub/file_download.py", line 629, in xet_get
+    download_files(
+KeyboardInterrupt
+>>> 
+model.safetensors:   0%|                                                                      | 0.00/548M [00:19<?, ?B/s]
+KeyboardInterrupt
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> exit()
+(my-llm-env) m@m-HP-Z440-Workstation:~/Desktop/vvvc$ python
+Python 3.10.19 (main, Oct 10 2025, 12:46:15) [Clang 20.1.4 ] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> from transformers import AutoModelForCausalLM
+/home/m/Desktop/vvvc/my-llm-env/lib/python3.10/site-packages/torch/cuda/__init__.py:63: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+>>> import torch
+>>> model = AutoModelForCausalLM.from_pretrained("meta-llama/Llama-3.2-1B-Instruct", device_map="auto", dtype=torch.bfloat16, attn_implementation="flash_attention_2")
+model.safetensors:  76%|██████████████████████████████████████████████               | 1.87G/2.47G [00:20<00:02, 295MB/s]
+
+
+
+
+
+^CCancellation requested; stopping current tasks.
+Traceback (most recent call last):
+  File "/home/m/Desktop/vvvc/my-llm-env/lib/python3.10/site-packages/huggingface_hub/file_download.py", line 629, in xet_get
+    download_files(
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/home/m/Desktop/vvvc/my-llm-env/lib/python3.10/site-packages/transformers/models/auto/auto_factory.py", line 604, in from_pretrained
+    return model_class.from_pretrained(
+  File "/home/m/Desktop/vvvc/my-llm-env/lib/python3.10/site-packages/transformers/modeling_utils.py", line 288, in _wrapper
+    return func(*args, **kwargs)
+  File "/home/m/Desktop/vvvc/my-llm-env/lib/python3.10/site-packages/transformers/modeling_utils.py", line 5027, in from_pretrained
+    checkpoint_files, sharded_metadata = _get_resolved_checkpoint_files(
+  File "/home/m/Desktop/vvvc/my-llm-env/lib/python3.10/site-packages/transformers/modeling_utils.py", line 1150, in _get_resolved_checkpoint_files
+    resolved_archive_file = cached_file(pretrained_model_name_or_path, filename, **cached_file_kwargs)
+  File "/home/m/Desktop/vvvc/my-llm-env/lib/python3.10/site-packages/transformers/utils/hub.py", line 321, in cached_file
+    file = cached_files(path_or_repo_id=path_or_repo_id, filenames=[filename], **kwargs)
+  File "/home/m/Desktop/vvvc/my-llm-env/lib/python3.10/site-packages/transformers/utils/hub.py", line 478, in cached_files
+    hf_hub_download(
+  File "/home/m/Desktop/vvvc/my-llm-env/lib/python3.10/site-packages/huggingface_hub/utils/_validators.py", line 114, in _inner_fn
+    return fn(*args, **kwargs)
+  File "/home/m/Desktop/vvvc/my-llm-env/lib/python3.10/site-packages/huggingface_hub/file_download.py", line 1010, in hf_hub_download
+    return _hf_hub_download_to_cache_dir(
+  File "/home/m/Desktop/vvvc/my-llm-env/lib/python3.10/site-packages/huggingface_hub/file_download.py", line 1171, in _hf_hub_download_to_cache_dir
+    _download_to_tmp_and_move(
+  File "/home/m/Desktop/vvvc/my-llm-env/lib/python3.10/site-packages/huggingface_hub/file_download.py", line 1723, in _download_to_tmp_and_move
+    xet_get(
+  File "/home/m/Desktop/vvvc/my-llm-env/lib/python3.10/site-packages/huggingface_hub/file_download.py", line 629, in xet_get
+    download_files(
+KeyboardInterrupt
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> # -*- coding: utf-8 -*-
+>>> 
+>>> from transformers import AutoModelForCausalLM, AutoTokenizer
+>>> import torch
+>>> 
+>>> # اسم أو مسار النموذج
+>>> model_id = "meta-llama/Llama-3.2-1B-Instruct"
+>>> 
+>>> # --- تحميل النموذج (الكود الذي قدمته) ---
+>>> # يتم تحديد dtype=torch.bfloat16 للاستفادة من وحدات المعالجة الحديثة (GPUs)
+>>> # ويتم تفعيل Flash Attention 2 عبر attn_implementation="flash_attention_2"
+>>> # هذا يطلب من Transformers استخدام التنفيذ المحسن للانتباه إذا كان متاحًا ومدعومًا.
+>>> print(f"بدء تحميل النموذج: {model_id}...")
+بدء تحميل النموذج: meta-llama/Llama-3.2-1B-Instruct...
+>>> model = AutoModelForCausalLM.from_pretrained(
+...     model_id,
+...     device_map="auto", # يوزع النموذج تلقائيًا على الـ GPU المتاح
+...     torch_dtype=torch.bfloat16,
+...     attn_implementation="flash_attention_2"
+... )
+`torch_dtype` is deprecated! Use `dtype` instead!
+
+model.safetensors:  76%|██████████████████████████████████████████████               | 1.87G/2.47G [00:18<00:01, 411MB/s]
+
+
+
+model.safetensors: 100%|████████████████████████████████████████████████████████████| 2.47G/2.47G [02:28<00:00, 16.7MB/s]
+>>> print("تم تحميل النموذج بنجاح.")████████████████████████████████████████████████| 2.47G/2.47G [02:28<00:00, 25.3MB/s]
+تم تحميل النموذج بنجاح.
+>>> 
+>>> 
+>>> # --- الخطوة 1: تحميل الـ Tokenizer ---
+>>> # يجب أن يكون الـ Tokenizer متوافقًا مع النموذج لترميز النص بشكل صحيح.
+>>> tokenizer = AutoTokenizer.from_pretrained(model_id)
+>>> 
+>>> # بعض النماذج مثل Llama 3 لا تضبط رمز الحشو (padding token) افتراضيًا.
+>>> # من الجيد ضبطه، خاصة عند التعامل مع دفعات (batches).
+>>> if tokenizer.pad_token is None:
+...     tokenizer.pad_token = tokenizer.eos_token
+... 
+>>> 
+>>> # --- الخطوة 2: إعداد المُدخل (Prompt) باستخدام قالب المحادثة ---
+>>> # نماذج "Instruct" تتوقع تنسيقًا محددًا للمدخلات.
+>>> # استخدام `apply_chat_template` يضمن أن النص يُنسق بالطريقة التي تدرب عليها النموذج.
+>>> messages = [
+...     {"role": "user", "content": "ما هي عاصمة الإمارات العربية المتحدة؟ وما هي أشهر معالمها السياحية؟"},
+... ]
+>>> 
+>>> # تطبيق القالب وتحويل النص إلى أرقام (tokens) يفهمها النموذج
+>>> # ونقلها إلى نفس الجهاز الموجود عليه النموذج (GPU).
+>>> input_ids = tokenizer.apply_chat_template(
+...     messages,
+...     add_generation_prompt=True,
+...     return_tensors="pt"
+... ).to(model.device)
+>>> 
+>>> 
+>>> # --- الخطوة 3: توليد الإجابة ---
+>>> print("\n...يتم الآن توليد الإجابة...\n")
+
+...يتم الآن توليد الإجابة...
+
+>>> # استدعاء دالة `generate` لتنفيذ عملية الاستدلال.
+>>> outputs = model.generate(
+...     input_ids,
+...     max_new_tokens=256,       # الحد الأقصى لعدد التوكينات الجديدة التي سيتم توليدها
+...     do_sample=True,           # تفعيل أخذ العينات للحصول على إجابات أكثر تنوعًا
+...     temperature=0.6,          # درجة الحرارة للتحكم في عشوائية الإجابة (الأقل أكثر تحديدًا)
+...     top_p=0.9,                # تقنية "nucleus sampling" لاختيار الكلمات التالية
+... )
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:128001 for open-end generation.
+The attention mask is not set and cannot be inferred from input because pad token is same as eos token. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+>>> 
+>>> 
+>>> # --- الخطوة 4: فك تشفير النتيجة ---
+>>> # المخرجات `outputs` تحتوي على المُدخل الأصلي + النص المُولَّد.
+>>> # لذا، نقوم بقص الجزء الخاص بالمُدخل للحصول على الإجابة الجديدة فقط.
+>>> response_ids = outputs[0][input_ids.shape[-1]:]
+>>> decoded_response = tokenizer.decode(response_ids, skip_special_tokens=True)
+>>> 
+>>> 
+>>> # --- الخطوة 5: طباعة النتيجة النهائية ---
+>>> print("--- السؤال ---")
+--- السؤال ---
+>>> print(messages[0]['content'])
+ما هي عاصمة الإمارات العربية المتحدة؟ وما هي أشهر معالمها السياحية؟
+>>> print("\n--- إجابة النموذج ---")
+
+--- إجابة النموذج ---
+>>> print(decoded_response)
+عاصمة الإمارات العربية المتحدة هي أبوظبي. هي أكبر مدينة في الإمارات العربية المتحدة، وتبعد عن العاصمة عمان 45 كيلومتراً. يُعتبر أبوظبي من أبرز المدن في منطقة الخليج العربي، وتُعد واحدة من أهم المدن في العالم من حيث السياحة.
+
+أشهر المعالم السياحية في أبوظبي هي:
+
+1. جبل حكم - يعتبر جبل حكم واحد من أبرز المعالم السياحية في أبوظبي. يقع على بعد 10 كيلومترات من العاصمة.
+2. دبي - هي ثاني أكبر مدينة في الإمارات العربية المتحدة، وتعتبر واحدة من أبرز المدن في العالم.
+3. جبل الهيد - هو جبل ممتاز بموقع جيد، ويقع على بعد 30 كيلومترات من العاصمة.
+4. مدينتي دبي - يُعد دبي من أهم المدن في العالم من حيث السياحة، وتعد واحدة من أبرز المدن في العالم.
+5. دبي المحيط - هو محيط ممتاز بموقع جيد، ويقع على بعد 30 كيلومتر
+>>> 
+>>> 
+>>> 
+>>> 
+>>> exit()
+model.safetensors:  76%|█████████████████████████████████████████████▎              | 1.87G/2.47G [07:26<02:24, 4.19MB/s]
+(my-llm-env) m@m-HP-Z440-Workstation:~/Desktop/vvvc$ python 22.py
+/home/m/Desktop/vvvc/my-llm-env/lib/python3.10/site-packages/torch/cuda/__init__.py:63: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+بدء تحميل النموذج: meta-llama/Llama-3.2-1B-Instruct...
+تم تحميل النموذج بنجاح.
+
+...يتم الآن توليد الإجابة...
+
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:128001 for open-end generation.
+The attention mask is not set and cannot be inferred from input because pad token is same as eos token. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+--- السؤال ---
+ما هي عاصمة الإمارات العربية المتحدة؟ وما هي أشهر معالمها السياحية؟
+
+--- إجابة النموذج ---
+عاصمة الإمارات العربية المتحدة هي أبو ظبي. وأشهر معالمها السياحية هي:
+
+- جبل حليب: يقع في حلبة أبو ظبي ويعتبر من أهم المعالم السياحية في الإمارات. يعتبر جبل حليب من أبرز المعالم السياحية في العالم، حيث يحتوي على جبال وغابات وآبار ومحطات مائية وآثار عائلية.
+
+- جبل حليب الأجرة: يقع في جبل حليب ويعتبر من أهم المعالم السياحية في الإمارات. يعتبر جبل حليب الأجرة من أبرز المعالم السياحية في العالم، حيث يحتوي على جبال وغابات وآبار ومحطات مائية وآثار عائلية.
+
+- جبل حليب: يقع في حلبة أبو ظبي ويعتبر من أهم المعالم السياحية في الإمارات. يعتبر جبل حليب من أبرز المعالم السياحية في العالم، حيث يحتوي على جبال وغابات وآبار ومحطات مائية وآثار عائل
+(my-llm-env) m@m-HP-Z440-Workstation:~/Desktop/vvvc$ 
+
